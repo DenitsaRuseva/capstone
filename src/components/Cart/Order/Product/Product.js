@@ -12,7 +12,7 @@ const product = (props) => (
                 <div className="hidden">Price</div> 
                 <div className='td-price'>{(props.product.price*1).toFixed(2)}$</div>
                 <div className="hidden">Quantity</div>
-                <div className='td-quantity'><input type="number" name="quantity" min="1" max={props.product.stock} defaultValue={props.quantity} onChange={(event) => props.changeQuantity(event)}/></div>
+                <div className='td-quantity'><input type="number" name="quantity" min="1" max={props.product.stock} value={props.quantity} onChange={(event) => props.changeQuantity(event)}/></div>
                 <div className="hidden">Total Cost</div>
                 
                 <div className='td-total-price-product'>{(parseFloat(props.quantity*1)*props.product.price).toFixed(2)}$</div>

@@ -3,32 +3,19 @@ import Product from './Product/Product';
 import './Order.css';
 
 const order = (props) => {
-    const shipping = 10;
+    const shipping = props.totalPrice ? 10 : 0; //will show 0 if quantity is changed to 0
     // let totalPrice = 0;
     const products = props.products.map((product, i) => {
-        if(product.stock >= props.productsQuantities[i]){
-            // totalPrice = totalPrice + parseFloat(product.price)*props.productsQuantities[i];
+            console.log(product);
             return (
             <Product 
             key={i} 
             product={product} 
             quantity={props.productsQuantities[i]} 
             removeProduct={() => props.removeProduct(i)}
-            changeQuantity={(event) => props.changeQuantity(event, i)}/>
-            );
-        }
-        else {
-            // totalPrice = totalPrice + parseFloat(product.price)*parseInt(product.stock);
-            return (
-            <Product 
-            key={i} 
-            product={product} 
-            quantity={product.stock} 
-            quantityReduce={true} 
-            removeProduct={() => props.removeProduct(i)}
-            changeQuantity={(event) => props.changeQuantity(event, i)}/>
-            );
-        }
+            changeQuantity={(event) => props.changeQuantity(event, i)}
+            quantityReduce={props.quantityReduce[i]}/>
+            )
     });
     return(
         <div className='table'>

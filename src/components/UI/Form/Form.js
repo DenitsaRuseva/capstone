@@ -34,7 +34,7 @@ const form = (props) => {
                         onSubcetegoryChoosen={props.onSubcetegoryChoosen}/>
                 ))}
                  {/*rubric50*/}
-                <Button class={props.btnClass}>{props.btnText}</Button>
+                <Button class={props.btnClass} disabled={props.disableOrderBtn}>{props.btnText}</Button>
             </form>
         );
         return (

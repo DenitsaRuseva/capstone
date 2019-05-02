@@ -102,22 +102,6 @@ class Cart extends Component {
         formIsValid: false
     };
 
-    // inputChangedHandler = (event, inputIdentifier) => {
-    //     const updatedOrderForm = {
-    //         ...this.state.orderForm
-    //     };
-    //     const updatedFormElement = { 
-    //         ...updatedOrderForm[inputIdentifier]
-    //     };
-    //     updatedFormElement.value = event.target.value;
-    //     updatedFormElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation);
-    //     updatedFormElement.touched = true;
-    //     updatedOrderForm[inputIdentifier] = updatedFormElement;
-        
-    //     this.setState({orderForm: updatedOrderForm});
-
-    // }
-
 
       inputChangedHandler = (event, inputIdentifier) => {
         const updatedFormData = updateFormOnInput(event, inputIdentifier, this.state.orderForm);
@@ -143,14 +127,16 @@ class Cart extends Component {
                         productsQuantities={this.props.productsQuantities}
                         removeProduct={this.props.removeProduct}
                         changeQuantity={this.props.changeQuantity}
-                        totalPrice={this.props.totalPrice}/>
+                        totalPrice={this.props.totalPrice}
+                        quantityReduce={this.props.quantityReduce}/>
                     <Form /*rubric48, rubric50, rubric51, rubric52 */
                         form={this.state.orderForm}
                         inputChanged={this.inputChangedHandler}
                         onSubmited={() => this.props.makeOrder(this.state.formIsValid)}
                         formHeader="ENTER YOUR SHIPPING DETAILS"
                         btnClass='order-button'
-                        btnText="CHECKOUT"/>
+                        btnText="CHECKOUT"
+                        disableOrderBtn={this.props.totalPrice === 0}/>
                 </div>
               ) : <div className='cart-empty'>Your cart is empty</div>
         

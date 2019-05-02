@@ -16,6 +16,10 @@
     background-color: #e6e6e6;
 }
 
+.order-button:disabled {
+    cursor: not-allowed;
+}
+
 .contacts-button {
     width: 100px;
     padding: 5px 10px;
@@ -83,3 +87,4 @@
         margin-bottom: 100px;
     }
 }
+

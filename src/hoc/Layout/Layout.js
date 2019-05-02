@@ -26,6 +26,7 @@ class Layout extends Component {
         productsInCart: [],
         quantityOfEachProduct: [],
         totalPrice: 0,
+        quantityReduce: [],
         orderMade: false,
         selectedProduct: ''
     }
@@ -47,21 +48,27 @@ class Layout extends Component {
         if(quantity === 0){
             return;
         };
-        const updatedTotalPrice = this.state.totalPrice + this.props.allProducts[productId].price*quantity; 
+        const quantityReduce = quantity > parseInt(this.props.allProducts[productId].stock);
+        const updatedQuantity = quantityReduce ? parseInt(this.props.allProducts[productId].stock) : quantity;
+        const updatedTotalPrice = this.state.totalPrice + this.props.allProducts[productId].price*updatedQuantity; 
         let updatedProductsInCart = [...this.state.productsInCart];
-        let updatedQuantity = [...this.state.quantityOfEachProduct];
+        let updatedQuantityOfEachProduct = [...this.state.quantityOfEachProduct];
+        let updatedQuantityReduce = [];
             if (this.state.productsInCart.indexOf(this.props.allProducts[productId]) === -1) {
                 updatedProductsInCart.push(this.props.allProducts[productId]);
-                updatedQuantity.push(quantity*1);
+                updatedQuantityOfEachProduct.push(quantity*1);
+                updatedQuantityReduce.push(quantityReduce);
             } else {
                 let indexOfProduct = this.state.productsInCart.indexOf(this.props.allProducts[productId]);
-                updatedQuantity[indexOfProduct] = updatedQuantity[indexOfProduct] + quantity*1;
+                updatedQuantityOfEachProduct[indexOfProduct] = updatedQuantityOfEachProduct[indexOfProduct] + quantity*1;
+                updatedQuantityReduce[indexOfProduct] = quantityReduce;
             };
         
         this.setState({
             productsInCart: updatedProductsInCart,
-            quantityOfEachProduct: updatedQuantity,
-            totalPrice: updatedTotalPrice
+            quantityOfEachProduct: updatedQuantityOfEachProduct,
+            totalPrice: updatedTotalPrice,
+            quantityReduce: updatedQuantityReduce
         });
     };
 
@@ -82,11 +89,16 @@ class Layout extends Component {
 
     // rubric53, rubric55
     changeQuantityHandler = (event, index) => {
+        const quantityReduce = event.target.value > parseInt(this.state.productsInCart[index].stock);
+        const quantity = quantityReduce ?
+        parseInt(this.state.productsInCart[index].stock) : event.target.value;
         const updatedTotalPrice = this.state.totalPrice*1 - parseFloat(this.state.productsInCart[index].price*1)*(this.state.quantityOfEachProduct[index]*1) +
-        (this.state.productsInCart[index].price*1) * parseInt(event.target.value); 
+        (this.state.productsInCart[index].price*1) * quantity; 
         let newQuantities = [...this.state.quantityOfEachProduct];
-        newQuantities[index] = parseInt(event.target.value);
-        this.setState({quantityOfEachProduct: newQuantities, totalPrice: updatedTotalPrice});
+        newQuantities[index] = quantity;
+        let updatedQuantityReduce = [...this.state.quantityReduce];
+        updatedQuantityReduce[index] = quantityReduce;
+        this.setState({quantityOfEachProduct: newQuantities, totalPrice: updatedTotalPrice, quantityReduce: updatedQuantityReduce});
     };
 
     makeOrderHandler = (formIsValid) => {
@@ -156,7 +168,8 @@ class Layout extends Component {
                         orderMade={this.state.orderMade}
                         totalPrice={this.state.totalPrice}
                         makeOrder={this.makeOrderHandler}
-                        cleanState={this.resetProductsInCatrHandler}/>
+                        cleanState={this.resetProductsInCatrHandler}
+                        quantityReduce={this.state.quantityReduce}/>
                     {/*rubric62 */}
                     <Route path="/contact" exact component={ContactPage}/>
                     {/*rubric63 rubric64 */}
