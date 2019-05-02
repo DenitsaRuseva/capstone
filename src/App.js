@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Layout from './hoc/Layout/Layout';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { 
+  faShoppingCart, faStar, faChevronDown, faMinusCircle, faMapMarkerAlt,faPhone, faAt, faArrowAltCircleLeft, faImage, faAngleLeft, faAngleRight, faHome, faAddressBook, faInfo
+} from '@fortawesome/free-solid-svg-icons';
+import { Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+library.add(faShoppingCart);
+library.add(faStar);
+library.add(faChevronDown);
+library.add(faMinusCircle);
+library.add(faMapMarkerAlt);
+library.add(faPhone);
+library.add(faAt);
+library.add(faArrowAltCircleLeft);
+library.add(faImage);
+library.add(faAngleLeft);
+library.add(faAngleRight);
+library.add(faHome);
+library.add(faInfo);
+library.add(faAddressBook);
+
+
+
+
+
+
+
+class App extends Component {
+
+  componentDidMount(){
+    console.log('in CDM App');
+  } 
+
+  render() {
+    console.log('in render app');
+
+    return (
+      <Route to='/' component={Layout}/>
+    );
+  }
+};
 
 export default App;

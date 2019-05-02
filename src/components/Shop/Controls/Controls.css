@@ -1,0 +1,138 @@
+.controls-container {
+    position: relative;
+    top: 56px; /*50px side bar  5px shop padding top + 1px styling*/
+    display: block;
+    float: right;
+    width: 100%;
+    height: 150px;
+}
+
+.controls {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5px;
+}
+
+.category-name, .sort-label, .instock-label {
+    width: 100%;
+    height: 33.333%;
+    float: left;
+    padding: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    background-color: #006633;
+}
+
+.content-wrapper {
+    padding: 3px 10px;
+    background-color: white;
+}
+
+.category-name {
+    margin-bottom: 1px;
+}
+
+.number-of-products {
+    display: inline-block;
+    width: 100%;
+    height: 33.3333%;
+    line-height: 100%;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    border: 1px solid #006633;
+    
+}
+
+.sort-label, .instock-label {
+    width: 50%;
+}
+
+.category-name span, .number-of-products {
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+}
+
+.content-wrapper, .number-of-products span {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+
+.category-name > .content-wrapper span,
+.sort-label > .content-wrapper span {
+    display: block;
+    text-align: center;
+}
+
+.sort-label > .content-wrapper select {
+    margin-bottom: 3px;
+    max-width: 50vw;
+}
+
+.instock-label input {
+    position: relative;
+    display: inline-block;
+    top: 2px;
+    max-width: 50vw;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    .controls-container {
+        top: 0px;
+        float: right;
+        width: 100%;
+        height: 100px;
+        
+    }
+
+    .controls {
+        padding-bottom: 0px;
+    }
+
+    .category-name, .sort-label, .instock-label {
+        width: 25%;
+        height: 50%;
+    }
+
+    .category-name {
+        margin-left: 25%;
+    }
+
+    .number-of-products {
+       height: 50%;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .controls-container {
+        width: 75%;
+        height: 100px;
+    }
+
+    .category-name, .sort-label, .instock-label {
+        width: 33.3333%;
+        height: 50%;
+    }
+  
+    .category-name {
+        margin-left: 0px;
+    }
+
+    .sort-label > .content-wrapper select {
+        margin-bottom: 0px;
+    }
+}
+
+@media only screen and (min-width: 1030px) {
+    .controls-container {
+        width: 80%;
+    }
+}

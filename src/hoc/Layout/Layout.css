@@ -1,0 +1,86 @@
+.layout {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.main {
+    display: inline-block;
+    width: 100%;
+    min-height: calc(100vh - 129px); /* 56px for toolbar and 73px for footer*/
+    margin-top: 56px;
+    background-color: #f4f4f4;
+}
+
+.grid-container {
+    width: 100%;
+}
+
+.flex-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    border: 1px solid black;
+}
+
+.row {
+    width: 100%;
+}
+
+[class*="col-"] {
+    width: 100%;
+    float: left;
+}
+
+.col-es-4-12 {
+    width: 33.33%;
+}
+
+.hide-on-es {
+    display: none;
+}
+  
+@media only screen and (min-width: 600px) {
+    .hide-on-es {
+        display: block;
+    }
+    /* .col-s-3-12 {
+        width: 25%;
+    } */
+    .col-s-4-12 {
+        width: 33.33%;
+    }
+
+    .col-s-8-12 {
+        width: 66.67%;
+    }
+    .col-s-9-12 {
+        width: 75%;
+    }
+  }
+    
+  @media only screen and (min-width: 768px) {
+    .col-m-3-12 {
+        width: 25%;
+    }
+    .col-m-9-12 {
+        width: 75%;
+    }
+    
+  }
+  
+  @media only screen and (min-width: 992px) {
+    .col-l-1-5 {
+        width: 20%;
+     }
+  } 
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .col-el-2-12 {
+        width: 16.66%;
+    }
+}
