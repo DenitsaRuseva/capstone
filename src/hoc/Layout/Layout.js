@@ -45,7 +45,8 @@ class Layout extends Component {
 
     /* rubric44 */
     addProductToCartHandler = (productId, quantity = 1) => {
-        if(quantity === 0){
+        console.log(quantity);
+        if(quantity == 0){
             return;
         };
         const quantityReduce = quantity > parseInt(this.props.allProducts[productId].stock);

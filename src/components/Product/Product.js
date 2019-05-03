@@ -13,6 +13,7 @@ class Product extends Component {
         state = {
                 productQuantity: 1,
                 productId: '',
+                reduce: false,
                 loading: true
         };
 
@@ -44,8 +45,9 @@ class Product extends Component {
         };
 
         quantityChangeHandler =(event) => {
-                const newQuantity = event.target.value*1;
-                this.setState({productQuantity: newQuantity});
+                const reduce = event.target.value > parseInt(this.props.allProducts[this.state.productId].stock);
+                const newQuantity = reduce ? parseInt(this.props.allProducts[this.state.productId].stock) : event.target.value;
+                this.setState({productQuantity: newQuantity, reduce: reduce});
         };
 
         render(){
@@ -65,13 +67,15 @@ class Product extends Component {
                                 <div>rating: {(this.props.allProducts[this.state.productId].rating*1).toFixed(2)}</div>
                         {/* rubric38 */}
                                 <div>instock: {this.props.allProducts[this.state.productId].stock} pcs</div>
-                        {/* rubric42 */}                
-                                <Input elementType='input' elementConfig={{
+                        {/* rubric42 */}  
+
+                        <Input elementType='input' elementConfig={{
                                 type: 'number',
                                 min: 1,
                                 max: this.props.allProducts[this.state.productId].stock,
-                                defaultValue: 1
-                                }} label="Qty:" changed={(event) => this.quantityChangeHandler(event)}/>
+                                defaultValue: 1,
+                                }} value={this.state.productQuantity} label="Qty:" changed={(event) => this.quantityChangeHandler(event)}/>
+                                
                         {/* rubric40 */}
                                 <div>{this.props.allProducts[this.state.productId].description}</div>
                         {/* rubric41, rubric44 */}
