@@ -1,4 +1,5 @@
 .order-button {
+    position: relative;
     padding: 5px 10px;
     border-radius: 3px;
     outline: none;
@@ -6,6 +7,7 @@
     background-color: #b3b3b3;
     color: white;
     cursor: pointer;
+    z-index: 2;
 }
 
 .order-button:hover {
@@ -19,6 +21,15 @@
 .order-button:disabled, .order-button:disabled:hover{
     cursor: not-allowed;
     background-color: #e6e6e6;
+}
+
+/* .order-button:disabled:hover + div.tooltip-container {
+    z-index: 1;
+} */
+
+.order-button:disabled:hover + div.tooltip-container > div.tooltip > span.tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
 
 .contacts-button {
