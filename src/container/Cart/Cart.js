@@ -102,18 +102,24 @@ class Cart extends Component {
         formIsValid: false
     };
 
+    componentWillUpdate(){
+        console.log('in component will update cart');
+    };
 
-      inputChangedHandler = (event, inputIdentifier) => {
+    componentWillUnmount(){
+        console.log('in component will unmount cart');
+        this.props.clearZeroQuantities();
+    };
+
+    inputChangedHandler = (event, inputIdentifier) => {
         const updatedFormData = updateFormOnInput(event, inputIdentifier, this.state.orderForm);
-        
         this.setState({orderForm: updatedFormData[0], formIsValid: updatedFormData[1]});
     };
 
     render(){
-        const cart = this.props.products.length > 0 || this.props.orderMade  ? (
+        const cart = this.props.productsInCartIds.length > 0 || this.props.orderMade  ? (
                 <div className="cart">
                     <Modal show={this.props.orderMade} modalClosed={this.props.cleanState}>
-                        {/*rubric51*/}
                         <OrderSummary 
                         totalPrice={this.props.totalPrice}
                         firstName={this.state.orderForm.firstName.value}
@@ -122,14 +128,14 @@ class Cart extends Component {
                         city={this.state.orderForm.city.value}
                         phoneNumber={this.state.orderForm.phoneNumber.value}/>
                     </Modal>
-                    <Order  /*rubric47, rubric49, rubric53, rubric54, rubric55*/
-                        products={this.props.products} 
+                    <Order
+                        productsInCartIds={this.props.productsInCartIds} 
                         productsQuantities={this.props.productsQuantities}
                         removeProduct={this.props.removeProduct}
                         changeQuantity={this.props.changeQuantity}
                         totalPrice={this.props.totalPrice}
                         quantityReduce={this.props.quantityReduce}/>
-                    <Form /*rubric48, rubric50, rubric51, rubric52 */
+                    <Form
                         form={this.state.orderForm}
                         inputChanged={this.inputChangedHandler}
                         onSubmited={() => this.props.makeOrder(this.state.formIsValid)}

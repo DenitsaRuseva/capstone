@@ -13,7 +13,6 @@ class Product extends Component {
         state = {
                 productQuantity: 1,
                 productId: '',
-                reduce: false,
                 loading: true
         };
 
@@ -46,7 +45,7 @@ class Product extends Component {
 
         quantityChangeHandler =(event) => {
                 const reduce = event.target.value > parseInt(this.props.allProducts[this.state.productId].stock);
-                const newQuantity = reduce ? parseInt(this.props.allProducts[this.state.productId].stock) : event.target.value;
+                let newQuantity = reduce ? parseInt(this.props.allProducts[this.state.productId].stock) : event.target.value;
                 this.setState({productQuantity: newQuantity, reduce: reduce});
         };
 

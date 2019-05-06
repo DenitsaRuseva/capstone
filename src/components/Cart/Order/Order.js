@@ -3,19 +3,18 @@ import Product from './Product/Product';
 import './Order.css';
 
 const order = (props) => {
-    const shipping = props.totalPrice ? 10 : 0; //will show 0 if quantity is changed to 0
-    // let totalPrice = 0;
-    const products = props.products.map((product, i) => {
-            console.log(product);
+    const shipping = props.totalPrice ? 10*1 : 0*1;
+    const taxCost = props.totalPrice ? props.totalPrice*0.01 : 0;
+    const products = props.productsInCartIds.map((id, i) => {
             return (
             <Product 
-            key={i} 
-            product={product} 
-            quantity={props.productsQuantities[i]} 
-            removeProduct={() => props.removeProduct(i)}
-            changeQuantity={(event) => props.changeQuantity(event, i)}
-            quantityReduce={props.quantityReduce[i]}/>
-            )
+                key={i} 
+                productId={id} 
+                quantity={props.productsQuantities[i]} 
+                removeProduct={() => props.removeProduct(id, i)}
+                changeQuantity={(event) => props.changeQuantity(event.target.value, id, i)}
+                quantityReduce={props.quantityReduce[i]}/>
+            );
     });
     return(
         <div className='table'>
@@ -29,12 +28,16 @@ const order = (props) => {
                 </div>
             </div>
             {products}
-            {/*rubric49*/}
             <div className="cost">
-                <div>Subtotal: <span>{(props.totalPrice*1).toFixed(2)}$</span></div>
-                <div>Tax cost: <span>{(props.totalPrice*0.01).toFixed(2)}$</span></div>
-                <div>Shipping: <span>{(shipping*1).toFixed(2)}$</span></div>
-                <div className='total'>Total: <span>{(props.totalPrice*1.01 + shipping*1).toFixed(2)}$</span></div>
+            {/* <div>Subtotal: <span>{props.totalPrice}$</span></div>
+                <div>Tax cost: <span>{taxCost}$</span></div>
+                <div>Shipping: <span>{shipping}$</span></div>
+                <div className='total'>Total: <span>{(props.totalPrice + shipping + taxCost)}$</span></div> */}
+
+                <div>Subtotal: <span>{props.totalPrice.toFixed(2)}$</span></div>
+                <div>Tax cost: <span>{taxCost.toFixed(2)}$</span></div>
+                <div>Shipping: <span>{shipping.toFixed(2)}$</span></div>
+                <div className='total'>Total: <span>{(props.totalPrice + shipping + taxCost).toFixed(2)}$</span></div>
             </div>
         </div>
     )

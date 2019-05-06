@@ -17,14 +17,15 @@ import './Layout.css';
 import WithoutRootDiv from '../WithoutRootDiv/WithoutRootDiv';
 import WithErrorHandler from '../WithErrorHandler/WithErrorHandler';
 import axios from 'axios';
+import {removeArrayElement, addElementToArray, updateArrayElement} from '../../utility';
 
 
 class Layout extends Component {
 
     state = {
         showSideDrawer: false,
-        productsInCart: [],
-        quantityOfEachProduct: [],
+        productsInCartIds: [],
+        quantityOfEachProducts: [],
         totalPrice: 0,
         quantityReduce: [],
         orderMade: false,
@@ -43,63 +44,113 @@ class Layout extends Component {
     };
 
 
-    /* rubric44 */
-    addProductToCartHandler = (productId, quantity = 1) => {
-        console.log(quantity);
-        if(quantity == 0){
-            return;
-        };
-        const quantityReduce = quantity > parseInt(this.props.allProducts[productId].stock);
-        const updatedQuantity = quantityReduce ? parseInt(this.props.allProducts[productId].stock) : quantity;
-        const updatedTotalPrice = this.state.totalPrice + this.props.allProducts[productId].price*updatedQuantity; 
-        let updatedProductsInCart = [...this.state.productsInCart];
-        let updatedQuantityOfEachProduct = [...this.state.quantityOfEachProduct];
-        let updatedQuantityReduce = [];
-            if (this.state.productsInCart.indexOf(this.props.allProducts[productId]) === -1) {
-                updatedProductsInCart.push(this.props.allProducts[productId]);
-                updatedQuantityOfEachProduct.push(quantity*1);
-                updatedQuantityReduce.push(quantityReduce);
-            } else {
-                let indexOfProduct = this.state.productsInCart.indexOf(this.props.allProducts[productId]);
-                updatedQuantityOfEachProduct[indexOfProduct] = updatedQuantityOfEachProduct[indexOfProduct] + quantity*1;
-                updatedQuantityReduce[indexOfProduct] = quantityReduce;
-            };
+    addNewProductInCart = (productId, quantity) => {
+        const productQuantityReduce = quantity > this.props.allProducts[productId].stock; //boolean; hold reduce to current product;
+       
+        //check does entered quantity + quantity of product in cart is greater then stock of product
+         //if its greater -> updatedQuantity = stock of product
+         //if its not -> updatedQuantity = entered quantity + quantity of product in cart
+        const productQuantity = productQuantityReduce ? this.props.allProducts[productId].stock : quantity;
+
+        const updatedTotalPrice = (this.state.totalPrice*1000 + (this.props.allProducts[productId].price*productQuantity*1000))/1000; 
+        const updatedproductsInCartIds = addElementToArray(this.state.productsInCartIds, productId);
+        const updatedQuantityOfEachProducts = addElementToArray(this.state.quantityOfEachProducts, productQuantity);
+        const updatedQuantityReduce = addElementToArray(this.state.quantityReduce, productQuantityReduce); //array; hold reduce to all products in cart;
+
         
         this.setState({
-            productsInCart: updatedProductsInCart,
-            quantityOfEachProduct: updatedQuantityOfEachProduct,
+            productsInCartIds: updatedproductsInCartIds,
+            quantityOfEachProducts: updatedQuantityOfEachProducts,
             totalPrice: updatedTotalPrice,
             quantityReduce: updatedQuantityReduce
         });
     };
 
+    changeProductInCartQuantityHandler = (enteredQuantity, productId, index) => { //Used in cart
+        const quantity = Math.floor(enteredQuantity);
 
-    // rubric53, // rubric54, rubric55
-    removeProductHandller = (index) => {
-        const updatedTotalPrice = this.state.totalPrice - parseFloat(this.state.productsInCart[index].price*1)*(this.state.quantityOfEachProduct[index]*1); 
-        const newProducts = this.state.productsInCart.filter((_, i) => i !== index);
-        const newQuantities = this.state.quantityOfEachProduct.filter((_, i) => i !== index);
-        console.log(updatedTotalPrice);
+        //boolean; hold reduce to current product
+        const productQuantityReduce = (quantity) > this.props.allProducts[productId].stock;
+        
+         //check does entered quantity in cart is greater then stock of product
+         //if its greater -> updatedQuantity = stock of product
+         //if its not -> updatedQuantity = entered quantity
+        const updatedProductQuantity = productQuantityReduce ?
+        this.props.allProducts[productId].stock : 
+        quantity;
 
+        //total price -> first remove price of product*quntity which alredy is in cart
+        //then add product price * updatedProductQuantity
+        const updatedTotalPrice = (this.state.totalPrice*1000 - 
+        (this.props.allProducts[productId].price * this.state.quantityOfEachProducts[index]*1000) + 
+        (this.props.allProducts[productId].price*updatedProductQuantity*1000))/1000; 
+        const updatedQuantityOfEachProducts = updateArrayElement(this.state.quantityOfEachProducts, index, updatedProductQuantity);
+        const updatedQuantityReduce = updateArrayElement(this.state.quantityReduce, index, productQuantityReduce);
+        
         this.setState({
-            productsInCart: newProducts,
-            quantityOfEachProduct: newQuantities,
-            totalPrice: updatedTotalPrice
+            quantityOfEachProducts: updatedQuantityOfEachProducts,
+            totalPrice: updatedTotalPrice,
+            quantityReduce: updatedQuantityReduce
         });
+        
+    }
+
+    increaseProductInCartQuantityHandler = (enteredQuantity, productId, index) => { //Used in shop and in product page, where clicking
+                                                                                    //to add button must add certain quantiti to
+                                                                                    //alredy existing quantity (quantity is always increase);
+                                                                                    //not used in cart, where quantity may decrease;
+        const quantity = Math.floor(enteredQuantity);
+
+        //boolean; hold reduce to current product
+        const productQuantityReduce = (quantity + this.state.quantityOfEachProducts[index]) > this.props.allProducts[productId].stock;
+        
+         //check does entered quantity + quantity of product in cart is greater then stock of product
+         //if its greater -> updatedQuantity = stock of product
+         //if its not -> updatedQuantity = entered quantity + quantity of product in cart
+        const updatedProductQuantity = productQuantityReduce ?
+        this.props.allProducts[productId].stock : 
+        quantity + this.state.quantityOfEachProducts[index];
+
+        //total price -> first remove price of product*quntity which alredy is in cart
+        //then add product price * updatedProductQuantity
+        const updatedTotalPrice = (this.state.totalPrice*1000 - 
+        (this.props.allProducts[productId].price * this.state.quantityOfEachProducts[index]*1000) + (this.props.allProducts[productId].price*updatedProductQuantity*1000))/1000; 
+        const updatedQuantityOfEachProducts = updateArrayElement(this.state.quantityOfEachProducts, index, updatedProductQuantity);
+        const updatedQuantityReduce = updateArrayElement(this.state.quantityReduce, index, productQuantityReduce);
+        
+        this.setState({
+            quantityOfEachProducts: updatedQuantityOfEachProducts,
+            totalPrice: updatedTotalPrice,
+            quantityReduce: updatedQuantityReduce
+        });
+    }
+
+    addProductToCartHandler = (productId, enteredQuantity = 1) => { //initial value is set to 1 because of shop
+        const quantity = Math.floor(enteredQuantity);
+        if(quantity == 0){
+            return;
+        };
+        if (this.state.productsInCartIds.indexOf(productId) === -1) { //If same product isn`t in cart;
+            this.addNewProductInCart(productId, quantity);
+        } else { //If same product is in cart alredy;
+            this.increaseProductInCartQuantityHandler(quantity, productId, this.state.productsInCartIds.indexOf(productId));
+        };
     };
 
-    // rubric53, rubric55
-    changeQuantityHandler = (event, index) => {
-        const quantityReduce = event.target.value > parseInt(this.state.productsInCart[index].stock);
-        const quantity = quantityReduce ?
-        parseInt(this.state.productsInCart[index].stock) : event.target.value;
-        const updatedTotalPrice = this.state.totalPrice*1 - parseFloat(this.state.productsInCart[index].price*1)*(this.state.quantityOfEachProduct[index]*1) +
-        (this.state.productsInCart[index].price*1) * quantity; 
-        let newQuantities = [...this.state.quantityOfEachProduct];
-        newQuantities[index] = quantity;
-        let updatedQuantityReduce = [...this.state.quantityReduce];
-        updatedQuantityReduce[index] = quantityReduce;
-        this.setState({quantityOfEachProduct: newQuantities, totalPrice: updatedTotalPrice, quantityReduce: updatedQuantityReduce});
+
+    
+    removeProductHandller = (productId, index) => {
+        const updatedTotalPrice = (this.state.totalPrice*1000 - (this.props.allProducts[productId].price*this.state.quantityOfEachProducts[index]*1000))/1000; 
+        const updatedproductsInCartIds = removeArrayElement(this.state.productsInCartIds, index);
+        const updatedQuantitiesOfEachProducts = removeArrayElement(this.state.quantityOfEachProducts, index);
+        const updatedQuantityReduce = removeArrayElement(this.state.quantityReduce, index);
+
+        this.setState({
+            productsInCartIds: updatedproductsInCartIds,
+            quantityOfEachProducts: updatedQuantitiesOfEachProducts,
+            totalPrice: updatedTotalPrice,
+            quantityReduce: updatedQuantityReduce
+        });
     };
 
     makeOrderHandler = (formIsValid) => {
@@ -111,9 +162,31 @@ class Layout extends Component {
        return;
     };
 
+    removeZeroQuantitiesHandler = () => {
+        let updatedproductsInCartIds = [...this.state.productsInCartIds];
+        let updatedQuantitiesOfEachProducts = [...this.state.quantityOfEachProducts];
+        let updatedQuantityReduce = [...this.state.quantityReduce];
+        let haveZeroQuantity = false;
+        for(let i = this.state.productsInCartIds.length - 1; i >= 0; i--){
+            if(this.state.quantityOfEachProducts[i] === 0){
+               haveZeroQuantity = true;
+               updatedproductsInCartIds = removeArrayElement(updatedproductsInCartIds, i);
+               updatedQuantitiesOfEachProducts = removeArrayElement(updatedQuantitiesOfEachProducts, i);
+               updatedQuantityReduce = removeArrayElement(updatedQuantityReduce, i);
+            };
+        };
+        if(haveZeroQuantity){
+        this.setState({
+                    productsInCartIds: updatedproductsInCartIds,
+                    quantityOfEachProducts: updatedQuantitiesOfEachProducts,
+                    quantityReduce: updatedQuantityReduce
+                });
+        };
+    };
+
     resetProductsInCatrHandler = () => {
         this.props.history.replace('/');
-        this.setState({productsInCart: [], quantityOfEachProduct: [], totalPrice: [], orderMade: false})
+        this.setState({productsInCartIds: [], quantityOfEachProducts: [], totalPrice: [], orderMade: false})
     };
 
     showProductPageHandler = (id) => {
@@ -124,17 +197,17 @@ class Layout extends Component {
 
     render(){
         console.log('in render layout');
-        console.log(!this.props.allProducts.length);
-        const carouselRoute = this.props.loadingCarousel ? //rubric13
+
+        const carouselRoute = this.props.loadingCarousel ?
         <Route path="/" exact render={() => <Spinner/>}/> : 
         <PropsRoute path="/" exact 
         component={ Carousel } 
         showProductPage={(id) => this.showProductPageHandler(id)}
         addProductToCart={this.addProductToCartHandler}
         />
-        const shopRoute = this.props.loadingShop ? <Route path='/shopping' render={() => <Spinner/>}/> : ( //rubric34
+
+        const shopRoute = this.props.loadingShop ? <Route path='/shopping' render={() => <Spinner/>}/> : (
             <WithoutRootDiv>
-                {/* rubric34 */}
                 <Switch>
                     <PropsRoute path='/shopping/:category/:subcategory' component={Shop} addProductToCart={this.addProductToCartHandler} showProductPage={(id) => this.showProductPageHandler(id)}/>
                     <PropsRoute path='/shopping/:category' component={Shop} addProductToCart={this.addProductToCartHandler} showProductPage={(id) => this.showProductPageHandler(id)}/>
@@ -142,45 +215,44 @@ class Layout extends Component {
                 </Switch>
             </WithoutRootDiv>
         );
-        //rubric46
+
+        
         const productsRoute = this.props.allProducts.length ?  
             <PropsRoute path='/product' 
             component={Product}
             addProductToCart={this.addProductToCartHandler}
             product={this.state.selectedProduct}
             /> : <Spinner/>
-        return(
+
+        return (
             <div className='layout'>
-                <Toolbar toggleSideDrawer={this.toggleSideDrawerHandler}/> {/*rubric68 */}
+                <Toolbar toggleSideDrawer={this.toggleSideDrawerHandler}/>
                 <SideDrawer showSideDrawer={this.state.showSideDrawer} hideSideDrawer={this.toggleSideDrawerHandler}/>
                 <main className='main'>
                     <Switch>
                     {productsRoute}
-                   
-                    {/* rubric56 */}
                     <PropsRoute 
                         path='/cart' 
                         exact
                         component={Cart} 
-                        products={this.state.productsInCart} 
-                        productsQuantities={this.state.quantityOfEachProduct}
-                        changeQuantity={this.changeQuantityHandler}
+                        productsInCartIds={this.state.productsInCartIds} 
+                        productsQuantities={this.state.quantityOfEachProducts}
+                        changeQuantity={this.changeProductInCartQuantityHandler}
                         removeProduct={this.removeProductHandller}
                         orderMade={this.state.orderMade}
                         totalPrice={this.state.totalPrice}
                         makeOrder={this.makeOrderHandler}
                         cleanState={this.resetProductsInCatrHandler}
-                        quantityReduce={this.state.quantityReduce}/>
-                    {/*rubric62 */}
+                        quantityReduce={this.state.quantityReduce}
+                        clearZeroQuantities={this.removeZeroQuantitiesHandler}/>
                     <Route path="/contact" exact component={ContactPage}/>
-                    {/*rubric63 rubric64 */}
                     <Route path='/about' exact component={About}/>
                     {carouselRoute} 
                     {shopRoute}
                     <Route render={() => this.props.history.replace('/')}/> 
                     </Switch>
                 </main>
-                <Footer/> {/*rubric72 */}
+                <Footer/>
             </div>
         )
     };

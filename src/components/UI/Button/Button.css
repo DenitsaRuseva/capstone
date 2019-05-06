@@ -16,8 +16,9 @@
     background-color: #e6e6e6;
 }
 
-.order-button:disabled {
+.order-button:disabled, .order-button:disabled:hover{
     cursor: not-allowed;
+    background-color: #e6e6e6;
 }
 
 .contacts-button {

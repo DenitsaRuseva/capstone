@@ -23,8 +23,15 @@
 
 
 .quantity-reduce {
+    margin-bottom: 10px;
     color: red;
     font-style: italic;
+}
+
+@media only screen and (min-width: 500px){
+    .quantity-reduce {
+        margin-bottom: 0px;
+    }
 }
 
 .remove-icon {
@@ -47,7 +54,8 @@
 }
 
 .td-quantity > input {
-    width:40px;
+    width: auto;
+    max-width: 100%;
     text-align: center;
     border: 1px solid #808080;
 }

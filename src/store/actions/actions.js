@@ -48,6 +48,17 @@ const mekeAllProductsObject = (products) => {
         });
     });
     allProducts = flattenArray(allProducts);
+    allProducts = allProducts.map((product, i) => {
+        return {
+            name: product.name,
+            description: product.description,
+            imagelink: product.imagelink,
+            price: parseFloat(product.price),
+            reting: product.rating*1,
+            stock: parseFloat(product.stock)
+        }
+    });
+
     return allProducts;
 };
 
@@ -131,15 +142,13 @@ const makeCarouselProducts = () => {
         carouselProducts.push(99-i)
         // carouselProducts.push(i)
 
-    }
-    console.log(carouselProducts);
+    };
     carouselProducts = makeArrayToArraysWithNElements(carouselProducts);
     return carouselProducts;
 };
 
 const setState = (products) => {
     return dispatch => {
-        console.log(products);
         const allProducts = mekeAllProductsObject(products); //Make array of objects; Every object represent product;
         dispatch(setAllProducts(allProducts));
 
