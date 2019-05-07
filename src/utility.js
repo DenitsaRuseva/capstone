@@ -12,3 +12,10 @@ export const updateArrayElement = (array, index, updatedElement) => {
     return updatedArray;
 };
 
+export const sumArrayElements = (array) => {
+    const sum = array.reduce((partial_sum, element) => {
+       return partial_sum + element;
+    },0); 
+    return sum;
+};
+

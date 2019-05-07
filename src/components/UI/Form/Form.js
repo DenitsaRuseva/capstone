@@ -15,7 +15,6 @@ const form = (props) => {
                 config: props.form[key]
             });
         };
-        console.log(formElementsArray);
         let form = (
             <form onSubmit={(event) => {
                 event.preventDefault();

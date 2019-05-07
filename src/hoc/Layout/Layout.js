@@ -17,7 +17,7 @@ import './Layout.css';
 import WithoutRootDiv from '../WithoutRootDiv/WithoutRootDiv';
 import WithErrorHandler from '../WithErrorHandler/WithErrorHandler';
 import axios from 'axios';
-import {removeArrayElement, addElementToArray, updateArrayElement} from '../../utility';
+import {removeArrayElement, addElementToArray, updateArrayElement, sumArrayElements} from '../../utility';
 
 
 class Layout extends Component {
@@ -29,7 +29,8 @@ class Layout extends Component {
         totalPrice: 0,
         quantityReduce: [],
         orderMade: false,
-        selectedProduct: ''
+        selectedProduct: '',
+        numberOfProductsInCart: 0
     }
 
     componentDidMount(){
@@ -56,13 +57,14 @@ class Layout extends Component {
         const updatedproductsInCartIds = addElementToArray(this.state.productsInCartIds, productId);
         const updatedQuantityOfEachProducts = addElementToArray(this.state.quantityOfEachProducts, productQuantity);
         const updatedQuantityReduce = addElementToArray(this.state.quantityReduce, productQuantityReduce); //array; hold reduce to all products in cart;
-
+        const updatedNumberOfProductsInCart = sumArrayElements(updatedQuantityOfEachProducts);
         
         this.setState({
             productsInCartIds: updatedproductsInCartIds,
             quantityOfEachProducts: updatedQuantityOfEachProducts,
             totalPrice: updatedTotalPrice,
-            quantityReduce: updatedQuantityReduce
+            quantityReduce: updatedQuantityReduce,
+            numberOfProductsInCart: updatedNumberOfProductsInCart
         });
     };
 
@@ -86,11 +88,15 @@ class Layout extends Component {
         (this.props.allProducts[productId].price*updatedProductQuantity*1000))/1000; 
         const updatedQuantityOfEachProducts = updateArrayElement(this.state.quantityOfEachProducts, index, updatedProductQuantity);
         const updatedQuantityReduce = updateArrayElement(this.state.quantityReduce, index, productQuantityReduce);
+        const updatedNumberOfProductsInCart = sumArrayElements(updatedQuantityOfEachProducts);
+
+    
         
         this.setState({
             quantityOfEachProducts: updatedQuantityOfEachProducts,
             totalPrice: updatedTotalPrice,
-            quantityReduce: updatedQuantityReduce
+            quantityReduce: updatedQuantityReduce,
+            numberOfProductsInCart: updatedNumberOfProductsInCart
         });
         
     }
@@ -117,11 +123,13 @@ class Layout extends Component {
         (this.props.allProducts[productId].price * this.state.quantityOfEachProducts[index]*1000) + (this.props.allProducts[productId].price*updatedProductQuantity*1000))/1000; 
         const updatedQuantityOfEachProducts = updateArrayElement(this.state.quantityOfEachProducts, index, updatedProductQuantity);
         const updatedQuantityReduce = updateArrayElement(this.state.quantityReduce, index, productQuantityReduce);
+        const updatedNumberOfProductsInCart = sumArrayElements(updatedQuantityOfEachProducts);
         
         this.setState({
             quantityOfEachProducts: updatedQuantityOfEachProducts,
             totalPrice: updatedTotalPrice,
-            quantityReduce: updatedQuantityReduce
+            quantityReduce: updatedQuantityReduce,
+            numberOfProductsInCart: updatedNumberOfProductsInCart
         });
     }
 
@@ -144,12 +152,15 @@ class Layout extends Component {
         const updatedproductsInCartIds = removeArrayElement(this.state.productsInCartIds, index);
         const updatedQuantitiesOfEachProducts = removeArrayElement(this.state.quantityOfEachProducts, index);
         const updatedQuantityReduce = removeArrayElement(this.state.quantityReduce, index);
+        const updatedNumberOfProductsInCart = sumArrayElements(updatedQuantitiesOfEachProducts);
+
 
         this.setState({
             productsInCartIds: updatedproductsInCartIds,
             quantityOfEachProducts: updatedQuantitiesOfEachProducts,
             totalPrice: updatedTotalPrice,
-            quantityReduce: updatedQuantityReduce
+            quantityReduce: updatedQuantityReduce,
+            numberOfProductsInCart: updatedNumberOfProductsInCart
         });
     };
 
@@ -186,7 +197,7 @@ class Layout extends Component {
 
     resetProductsInCatrHandler = () => {
         this.props.history.replace('/');
-        this.setState({productsInCartIds: [], quantityOfEachProducts: [], totalPrice: [], orderMade: false})
+        this.setState({productsInCartIds: [], quantityOfEachProducts: [], totalPrice: [], orderMade: false, numberOfProductsInCart: 0})
     };
 
     showProductPageHandler = (id) => {
@@ -226,7 +237,7 @@ class Layout extends Component {
 
         return (
             <div className='layout'>
-                <Toolbar toggleSideDrawer={this.toggleSideDrawerHandler}/>
+                <Toolbar toggleSideDrawer={this.toggleSideDrawerHandler} badgeCount={this.state.numberOfProductsInCart}/>
                 <SideDrawer showSideDrawer={this.state.showSideDrawer} hideSideDrawer={this.toggleSideDrawerHandler}/>
                 <main className='main'>
                     <Switch>

@@ -1,0 +1,20 @@
+.badge-container {
+    display: inline-block;
+    position: relative;
+}
+
+.badge-container {
+    transition: all ease-in-out 0.3s;
+}
+
+.badge-container.show-badge {
+    transform: scale(1.2);
+}
+
+.badge-container.show-badge svg {
+    filter: drop-shadow(0px 0px 10px white);
+} 
+
+.badge-container.show-badge span.badge {
+    filter: drop-shadow(0px 0px 10px white);
+} 
