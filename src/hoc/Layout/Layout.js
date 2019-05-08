@@ -256,6 +256,20 @@ class Layout extends Component {
                         cleanState={this.resetProductsInCatrHandler}
                         quantityReduce={this.state.quantityReduce}
                         clearZeroQuantities={this.removeZeroQuantitiesHandler}/>
+                    <PropsRoute 
+                        path='/order' 
+                        exact
+                        component={Cart} 
+                        productsInCartIds={this.state.productsInCartIds} 
+                        productsQuantities={this.state.quantityOfEachProducts}
+                        changeQuantity={this.changeProductInCartQuantityHandler}
+                        removeProduct={this.removeProductHandller}
+                        orderMade={this.state.orderMade}
+                        totalPrice={this.state.totalPrice}
+                        makeOrder={this.makeOrderHandler}
+                        cleanState={this.resetProductsInCatrHandler}
+                        quantityReduce={this.state.quantityReduce}
+                        clearZeroQuantities={this.removeZeroQuantitiesHandler}/>
                     <Route path="/contact" exact component={ContactPage}/>
                     <Route path='/about' exact component={About}/>
                     {carouselRoute} 

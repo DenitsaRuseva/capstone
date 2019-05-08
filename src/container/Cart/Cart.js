@@ -6,6 +6,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Cart/OrderSummary/OrderSummary';
 import './Cart.css';
 import { updateFormOnInput } from '../utility';
+import {Route} from 'react-router-dom'; 
 
 class Cart extends Component {
 
@@ -116,9 +117,31 @@ class Cart extends Component {
         this.setState({orderForm: updatedFormData[0], formIsValid: updatedFormData[1]});
     };
 
+    showPrewiousPageHandler = () => {
+        this.props.history.goBack();
+    };
+
+    showOrderPageHandler = () => {
+        this.props.history.push('/order');
+    };
+
     render(){
-        const cart = this.props.productsInCartIds.length > 0 || this.props.orderMade  ? (
-                <div className="cart">
+        const orderForm = (
+            <div className="cart">
+                    <Order
+                        productsInCartIds={this.props.productsInCartIds} 
+                        productsQuantities={this.props.productsQuantities}
+                        removeProduct={this.props.removeProduct}
+                        changeQuantity={this.props.changeQuantity}
+                        totalPrice={this.props.totalPrice}
+                        quantityReduce={this.props.quantityReduce}
+                        showPreviousPage={this.showPrewiousPageHandler}
+                        showOrderPage={this.showOrderPageHandler}/>
+            </div>
+        );
+
+        const orderDetails = (
+            <div className="cart">
                     <Modal show={this.props.orderMade} modalClosed={this.props.cleanState}>
                         <OrderSummary 
                         totalPrice={this.props.totalPrice}
@@ -128,27 +151,21 @@ class Cart extends Component {
                         city={this.state.orderForm.city.value}
                         phoneNumber={this.state.orderForm.phoneNumber.value}/>
                     </Modal>
-                    <Order
-                        productsInCartIds={this.props.productsInCartIds} 
-                        productsQuantities={this.props.productsQuantities}
-                        removeProduct={this.props.removeProduct}
-                        changeQuantity={this.props.changeQuantity}
-                        totalPrice={this.props.totalPrice}
-                        quantityReduce={this.props.quantityReduce}/>
-                    <Form
-                        form={this.state.orderForm}
-                        inputChanged={this.inputChangedHandler}
-                        onSubmited={() => this.props.makeOrder(this.state.formIsValid)}
-                        formHeader="ENTER YOUR SHIPPING DETAILS"
-                        btnClass='order-button'
-                        btnText="CHECKOUT"
-                        disableOrderBtn={this.props.totalPrice === 0}/>
-                </div>
-              ) : <div className='cart-empty'>Your cart is empty</div>
+                <Form
+                form={this.state.orderForm}
+                inputChanged={this.inputChangedHandler}
+                onSubmited={() => this.props.makeOrder(this.state.formIsValid)}
+                formHeader="ENTER YOUR SHIPPING DETAILS"
+                btnClass='order-button'
+                btnText="CHECKOUT"
+                disableOrderBtn={this.props.totalPrice === 0}/>
+            </div>
+        );
         
         return (
             <WithoutRootDiv>
-                {cart}
+                <Route path='/cart' exact render={ () => orderForm}/>
+                <Route path='/order' exact render={() => orderDetails}/>
             </WithoutRootDiv> 
         );
     };

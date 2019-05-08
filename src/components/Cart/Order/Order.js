@@ -1,5 +1,6 @@
 import React from 'react';
 import Product from './Product/Product';
+import Button from '../../UI/Button/Button';
 import './Order.css';
 
 const order = (props) => {
@@ -29,15 +30,15 @@ const order = (props) => {
             </div>
             {products}
             <div className="cost">
-            {/* <div>Subtotal: <span>{props.totalPrice}$</span></div>
-                <div>Tax cost: <span>{taxCost}$</span></div>
-                <div>Shipping: <span>{shipping}$</span></div>
-                <div className='total'>Total: <span>{(props.totalPrice + shipping + taxCost)}$</span></div> */}
-
                 <div>Subtotal: <span>{props.totalPrice.toFixed(2)}$</span></div>
                 <div>Tax cost: <span>{taxCost.toFixed(2)}$</span></div>
                 <div>Shipping: <span>{shipping.toFixed(2)}$</span></div>
                 <div className='total'>Total: <span>{(props.totalPrice + shipping + taxCost).toFixed(2)}$</span></div>
+            </div>
+            <div className='border-row'><div className='border'></div></div>
+            <div className="order-controls">
+                <Button clicked={props.showPreviousPage} class="add-button">Back</Button>
+                <Button clicked={props.showOrderPage} class="add-button">Counitue</Button>
             </div>
         </div>
     )
