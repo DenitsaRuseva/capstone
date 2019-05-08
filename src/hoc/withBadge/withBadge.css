@@ -1,10 +1,11 @@
 .badge-container {
     display: inline-block;
     position: relative;
+    transition: all ease-in-out 0.3s;
 }
 
-.badge-container {
-    transition: all ease-in-out 0.3s;
+.badge-container svg {
+    position: relative;
 }
 
 .badge-container.show-badge {

@@ -1,6 +1,7 @@
 .badge {
     position: absolute;
-    top: -8px;
+    /* top: -8px; */
+    bottom: 50%;
     left: 10px;
     width: 18px;
     height: 18px;
