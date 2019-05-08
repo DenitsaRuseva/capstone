@@ -144,6 +144,8 @@ class Cart extends Component {
             <div className="cart">
                     <Modal show={this.props.orderMade} modalClosed={this.props.cleanState}>
                         <OrderSummary 
+                        productsInCartIds={this.props.productsInCartIds} 
+                        productsQuantities={this.props.productsQuantities}
                         totalPrice={this.props.totalPrice}
                         firstName={this.state.orderForm.firstName.value}
                         lastName={this.state.orderForm.lastName.value}
