@@ -1,7 +1,6 @@
 import React from 'react';
 import Input from '../../UI/Input/Input';
 import Button from '../../UI/Button/Button';
-import Tooltip from '../Tooltip/Tooltip';
 import './Form.css';
 
 
@@ -35,7 +34,6 @@ const form = (props) => {
                 ))}
                 <div className='form-btn-container'>
                     <Button class={props.btnClass} disabled={props.disableOrderBtn}>{props.btnText}</Button>
-                    <Tooltip>Your product quantity is zero</Tooltip>
                 </div>
                 
             </form>

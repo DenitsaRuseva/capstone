@@ -253,15 +253,19 @@
 
 .order-controls {
     width: 100%;
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-content: center;
 }
 
-.order-controls .add-button {
-    margin: 10px;
+.order-control-container {
+   margin: 10px;
 }
+
+
+
 
 
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Product from './Product/Product';
 import Button from '../../UI/Button/Button';
+import WithTooltip from '../../../hoc/WithTooltip/WithTooltip';
 import './Order.css';
 
 const order = (props) => {
@@ -37,8 +38,17 @@ const order = (props) => {
             </div>
             <div className='border-row'><div className='border'></div></div>
             <div className="order-controls">
-                <Button clicked={props.showPreviousPage} class="add-button">Back</Button>
-                <Button clicked={props.showOrderPage} class="add-button">Counitue</Button>
+                <div className='order-control-container'>
+                    <Button clicked={props.showPreviousPage} class="add-button">Back</Button>
+                </div>
+                <div className='order-control-container'>
+                    <WithTooltip 
+                    message='Your cart is empty'
+                    showTooltip={!props.totalPrice}>
+                        <Button clicked={props.showOrderPage} disabled={props.totalPrice === 0} class="add-button">Continue</Button>
+                    </WithTooltip>
+                </div>
+                
             </div>
         </div>
     )

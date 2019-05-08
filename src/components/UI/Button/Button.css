@@ -23,11 +23,6 @@
     background-color: #d9d9d9;
 }
 
-.order-button:disabled:hover + div.tooltip-container > div.tooltip > span.tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
-
 .contacts-button {
     width: 100px;
     padding: 5px 10px;
@@ -78,6 +73,13 @@
 
 .add-button:active {
     background-color: #66cc00;
+}
+
+.add-button:disabled, .add-button:hover:disabled  {
+    cursor: not-allowed;
+    background-color: #b3b3b3;
+    box-shadow: none;
+    color: #737373;
 }
 
 .shop-all-btn {
