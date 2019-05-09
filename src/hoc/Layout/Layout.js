@@ -238,7 +238,7 @@ class Layout extends Component {
         return (
             <div className='layout'>
                 <Toolbar toggleSideDrawer={this.toggleSideDrawerHandler} badgeCount={this.state.numberOfProductsInCart}/>
-                <SideDrawer showSideDrawer={this.state.showSideDrawer} hideSideDrawer={this.toggleSideDrawerHandler}/>
+                <SideDrawer showSideDrawer={this.state.showSideDrawer} hideSideDrawer={this.toggleSideDrawerHandler} badgeCount={this.state.numberOfProductsInCart}/>
                 <main className='main'>
                     <Switch>
                     {productsRoute}
