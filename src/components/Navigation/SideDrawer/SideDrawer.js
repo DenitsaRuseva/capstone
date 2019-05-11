@@ -7,7 +7,7 @@ const sideDrawer = (props) => {
     return(
         <div className={attachedClasses.join(' ')}>
             <nav>
-                <NavigationItems hideSideDrawer={props.hideSideDrawer} showBadge={false} showTooltip={props.badgeCount < 1} badgeCount={props.badgeCount}/>
+                <NavigationItems hideSideDrawer={props.hideSideDrawer} showBadge={false} showTooltip={props.showCartTooltip} clickOnEmptyCart={props.clickOnEmptyCart} badgeCount={props.badgeCount}/>
             </nav>
         </div>
     );

@@ -31,7 +31,8 @@ class Layout extends Component {
         quantityReduce: [],
         orderMade: false,
         selectedProduct: '',
-        numberOfProductsInCart: 0
+        numberOfProductsInCart: 0,
+        showCartTooltip: false
     }
 
     componentDidMount(){
@@ -207,6 +208,13 @@ class Layout extends Component {
         this.props.history.push(url);
     };
 
+    showCartTooltipHandler = () => {
+        this.setState({showCartTooltip: true});
+        setTimeout(() => {
+            this.setState({showCartTooltip: false});
+        }, 1300);
+    }
+
     render(){
         console.log('in render layout');
 
@@ -258,8 +266,17 @@ class Layout extends Component {
 
         return (
             <div className='layout'>
-                <Toolbar toggleSideDrawer={this.toggleSideDrawerHandler} badgeCount={this.state.numberOfProductsInCart}/>
-                <SideDrawer showSideDrawer={this.state.showSideDrawer} hideSideDrawer={this.toggleSideDrawerHandler} badgeCount={this.state.numberOfProductsInCart}/>
+                <Toolbar 
+                toggleSideDrawer={this.toggleSideDrawerHandler} 
+                badgeCount={this.state.numberOfProductsInCart}
+                showCartTooltip={this.state.showCartTooltip}
+                clickOnEmptyCart={this.showCartTooltipHandler}/>
+                <SideDrawer 
+                showSideDrawer={this.state.showSideDrawer} 
+                hideSideDrawer={this.toggleSideDrawerHandler} 
+                badgeCount={this.state.numberOfProductsInCart}
+                showCartTooltip={this.state.showCartTooltip}
+                clickOnEmptyCart={this.showCartTooltipHandler}/>
                 <main className='main'>
                     <Switch>
                     {productsRoute}
