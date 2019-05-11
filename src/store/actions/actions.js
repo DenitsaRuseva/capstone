@@ -49,12 +49,13 @@ const mekeAllProductsObject = (products) => {
     });
     allProducts = flattenArray(allProducts);
     allProducts = allProducts.map((product, i) => {
+        console.log(product);
         return {
             name: product.name,
             description: product.description,
             imagelink: product.imagelink,
             price: parseFloat(product.price),
-            reting: product.rating*1,
+            rating: parseInt(product.rating),
             stock: parseFloat(product.stock)
         }
     });

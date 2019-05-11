@@ -38,14 +38,15 @@ class Product extends Component {
                             this.props.history.replace('/shopping');
                         }
                         else {
-                                this.setState({productId: productId*1, loading: false});
+                                this.setState({productId: productId, loading: false});
                         };
                 };
         };
 
         quantityChangeHandler =(event) => {
-                const reduce = event.target.value > parseInt(this.props.allProducts[this.state.productId].stock);
-                let newQuantity = reduce ? parseInt(this.props.allProducts[this.state.productId].stock) : event.target.value;
+                const quantity = Math.floor(event.target.value);
+                const reduce = quantity > this.props.allProducts[this.state.productId].stock;
+                let newQuantity = reduce ? this.props.allProducts[this.state.productId].stock : quantity;
                 this.setState({productQuantity: newQuantity, reduce: reduce});
         };
 
@@ -63,16 +64,15 @@ class Product extends Component {
                         {/* rubric39 */}
                                 <div>price: {this.props.allProducts[this.state.productId].price.toFixed(2)}$</div>
                         {/* rubric37 */}
-                                <div>rating: {(this.props.allProducts[this.state.productId].rating*1).toFixed(2)}</div>
+                                <div>rating: {this.props.allProducts[this.state.productId].rating.toFixed(2)}</div>
                         {/* rubric38 */}
                                 <div>instock: {this.props.allProducts[this.state.productId].stock} pcs</div>
                         {/* rubric42 */}  
 
                         <Input elementType='input' elementConfig={{
                                 type: 'number',
-                                min: 1,
+                                min: "1",
                                 max: this.props.allProducts[this.state.productId].stock,
-                                defaultValue: 1,
                                 }} value={this.state.productQuantity} label="Qty:" changed={(event) => this.quantityChangeHandler(event)}/>
                                 
                         {/* rubric40 */}
