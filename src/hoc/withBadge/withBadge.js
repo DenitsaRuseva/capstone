@@ -9,16 +9,26 @@ class WithBadge extends Component{
         anime: false
     }
 
+    // componentDidMount(){
+    //     this.setState(prevState => ({anime: !prevState.anime}));
+    //     setTimeout(() => {
+    //         this.setState(prevState => ({anime: !prevState.anime}));
+    //     }, 1000);
+    // };
+
+
+
     componentWillReceiveProps(nextProps){
-        if(nextProps.count !== this.props.count){
+        if(nextProps.showBadge === true && nextProps.count !== this.props.count){
             this.setState(prevState => ({anime: !prevState.anime}));
         setTimeout(() => {
             this.setState(prevState => ({anime: !prevState.anime}));
         }, 1000);
-    }
+    };
     };
 
     render(){
+        console.log(this.props.showBadge);
         const attachedClasses = this.state.anime ? 'badge-container show-badge' : 'badge-container'
         return (
            <div className={attachedClasses}>

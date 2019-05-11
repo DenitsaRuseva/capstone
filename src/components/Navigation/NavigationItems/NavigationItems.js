@@ -10,19 +10,11 @@ const navigationItems = (props) => (
     <ul className='navigationItems'>
         <NavigationItem link='/' exact={true} clicked={props.hideSideDrawer}>Home</NavigationItem>
         <NavigationItem link="/shopping" clicked={props.hideSideDrawer}>Shop</NavigationItem>
-        {props.badgeCount > 0 ? (
-         <div className='navigationItems'>
-            <NavigationItem link="/cart">
-                <WithBadge  showBadge={true} count={props.badgeCount}><FontAwesomeIcon icon='shopping-cart' aria-hidden="true"/></WithBadge>
+        <div className=''>
+            <NavigationItem link='/cart' clicked={props.badgeCount > 0 ? null : (event) => event.preventDefault()}>
+                <WithBadge  showBadge={props.showBadge} count={props.badgeCount}><WithTooltip showTooltip={props.showTooltip} position='down' message='Cart is empty'><FontAwesomeIcon icon='shopping-cart' aria-hidden="true"/></WithTooltip></WithBadge>
             </NavigationItem>
-        </div>   
-        ) : (
-            <div className='navigationItems empty-cart'>
-            <NavigationItem>
-               <WithTooltip showTooltip={true} position='down' message='Cart is empty'><WithBadge  showBadge={props.badgeCount > 0} count={props.badgeCount}><FontAwesomeIcon icon='shopping-cart' aria-hidden="true"/></WithBadge></WithTooltip> 
-            </NavigationItem>
-        </div>   
-        )}
+        </div>
     </ul>
 );
 

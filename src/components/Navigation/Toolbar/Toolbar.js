@@ -11,22 +11,13 @@ const toolbar = (props) => (
     <header className="toolbar">
     <DrawerToggle clicked={props.toggleSideDrawer}/>
         <nav className='desktop-only'>
-            <NavigationItems badgeCount={props.badgeCount}/>
+            <NavigationItems badgeCount={props.badgeCount} showBadge={props.badgeCount > 0} showTooltip={props.badgeCount < 1}/>
         </nav>
-        {props.badgeCount > 0 ? (
-         <div className='navigationItems sm-only'>
-            <NavigationItem link="/cart">
-                <WithBadge  showBadge={props.badgeCount > 0} count={props.badgeCount}><FontAwesomeIcon icon='shopping-cart' aria-hidden="true"/></WithBadge>
+        <nav className='sm-only'>
+            <NavigationItem link='/cart' clicked={props.badgeCount > 0 ? null : (event) => event.preventDefault()}>
+                <WithBadge  showBadge={props.badgeCount > 0} count={props.badgeCount}><WithTooltip showTooltip={props.badgeCount < 1} position='down' message='Cart is empty'><FontAwesomeIcon icon='shopping-cart' aria-hidden="true"/></WithTooltip></WithBadge>
             </NavigationItem>
-        </div>   
-        ) : (
-            <div className='navigationItems empty-cart sm-only'>
-            <NavigationItem>
-               <WithTooltip showTooltip={true} position='down' message='Cart is empty'><FontAwesomeIcon icon='shopping-cart' aria-hidden="true"/></WithTooltip> 
-            </NavigationItem>
-        </div>   
-        )}
-        
+        </nav>
     </header>
 );
 
