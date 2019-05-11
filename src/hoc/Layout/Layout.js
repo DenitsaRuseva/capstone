@@ -236,6 +236,23 @@ class Layout extends Component {
             </WithoutRootDiv>
         );
 
+        const cartRoute = this.state.numberOfProductsInCart !== 0 ? (
+            <PropsRoute 
+            path='/cart' 
+            exact
+            component={Cart} 
+            productsInCartIds={this.state.productsInCartIds} 
+            productsQuantities={this.state.quantityOfEachProducts}
+            changeQuantity={this.changeProductInCartQuantityHandler}
+            removeProduct={this.removeProductHandller}
+            orderMade={this.state.orderMade}
+            totalPrice={this.state.totalPrice}
+            makeOrder={this.makeOrderHandler}
+            cleanState={this.resetProductsInCatrHandler}
+            quantityReduce={this.state.quantityReduce}
+            clearZeroQuantities={this.removeZeroQuantitiesHandler}/>
+        ) : null;
+
         
         const productsRoute = this.props.allProducts.length ?  (
             <PropsRoute path='/product' 
@@ -244,25 +261,6 @@ class Layout extends Component {
             product={this.state.selectedProduct}
             />
         ) : <Spinner/>;
-
-        // const cartRoute = this.props.numberOfProductsInCart > 0 ? (
-        //     <PropsRoute 
-        //     path='/cart' 
-        //     exact
-        //     component={Cart} 
-        //     productsInCartIds={this.state.productsInCartIds} 
-        //     productsQuantities={this.state.quantityOfEachProducts}
-        //     changeQuantity={this.changeProductInCartQuantityHandler}
-        //     removeProduct={this.removeProductHandller}
-        //     orderMade={this.state.orderMade}
-        //     totalPrice={this.state.totalPrice}
-        //     makeOrder={this.makeOrderHandler}
-        //     cleanState={this.resetProductsInCatrHandler}
-        //     quantityReduce={this.state.quantityReduce}
-        //     clearZeroQuantities={this.removeZeroQuantitiesHandler}/>
-        // ) : null;
-
-        
 
         return (
             <div className='layout'>
@@ -280,20 +278,7 @@ class Layout extends Component {
                 <main className='main'>
                     <Switch>
                     {productsRoute}
-                    <PropsRoute 
-                    path='/cart' 
-                    exact
-                    component={Cart} 
-                    productsInCartIds={this.state.productsInCartIds} 
-                    productsQuantities={this.state.quantityOfEachProducts}
-                    changeQuantity={this.changeProductInCartQuantityHandler}
-                    removeProduct={this.removeProductHandller}
-                    orderMade={this.state.orderMade}
-                    totalPrice={this.state.totalPrice}
-                    makeOrder={this.makeOrderHandler}
-                    cleanState={this.resetProductsInCatrHandler}
-                    quantityReduce={this.state.quantityReduce}
-                    clearZeroQuantities={this.removeZeroQuantitiesHandler}/>
+                   {cartRoute}
                     <PropsRoute 
                         path='/order' 
                         exact
