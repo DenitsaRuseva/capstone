@@ -237,22 +237,22 @@ class Layout extends Component {
             />
         ) : <Spinner/>;
 
-        const cartRoute = this.props.numberOfProductsInCart > 0 ? (
-            <PropsRoute 
-            path='/cart' 
-            exact
-            component={Cart} 
-            productsInCartIds={this.state.productsInCartIds} 
-            productsQuantities={this.state.quantityOfEachProducts}
-            changeQuantity={this.changeProductInCartQuantityHandler}
-            removeProduct={this.removeProductHandller}
-            orderMade={this.state.orderMade}
-            totalPrice={this.state.totalPrice}
-            makeOrder={this.makeOrderHandler}
-            cleanState={this.resetProductsInCatrHandler}
-            quantityReduce={this.state.quantityReduce}
-            clearZeroQuantities={this.removeZeroQuantitiesHandler}/>
-        ) : null;
+        // const cartRoute = this.props.numberOfProductsInCart > 0 ? (
+        //     <PropsRoute 
+        //     path='/cart' 
+        //     exact
+        //     component={Cart} 
+        //     productsInCartIds={this.state.productsInCartIds} 
+        //     productsQuantities={this.state.quantityOfEachProducts}
+        //     changeQuantity={this.changeProductInCartQuantityHandler}
+        //     removeProduct={this.removeProductHandller}
+        //     orderMade={this.state.orderMade}
+        //     totalPrice={this.state.totalPrice}
+        //     makeOrder={this.makeOrderHandler}
+        //     cleanState={this.resetProductsInCatrHandler}
+        //     quantityReduce={this.state.quantityReduce}
+        //     clearZeroQuantities={this.removeZeroQuantitiesHandler}/>
+        // ) : null;
 
         
 
@@ -263,7 +263,20 @@ class Layout extends Component {
                 <main className='main'>
                     <Switch>
                     {productsRoute}
-                    {cartRoute}
+                    <PropsRoute 
+                    path='/cart' 
+                    exact
+                    component={Cart} 
+                    productsInCartIds={this.state.productsInCartIds} 
+                    productsQuantities={this.state.quantityOfEachProducts}
+                    changeQuantity={this.changeProductInCartQuantityHandler}
+                    removeProduct={this.removeProductHandller}
+                    orderMade={this.state.orderMade}
+                    totalPrice={this.state.totalPrice}
+                    makeOrder={this.makeOrderHandler}
+                    cleanState={this.resetProductsInCatrHandler}
+                    quantityReduce={this.state.quantityReduce}
+                    clearZeroQuantities={this.removeZeroQuantitiesHandler}/>
                     <PropsRoute 
                         path='/order' 
                         exact

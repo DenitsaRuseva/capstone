@@ -15,6 +15,7 @@ const navigationItems = (props) => (
                 <WithBadge  showBadge={props.showBadge} count={props.badgeCount}><WithTooltip showTooltip={props.showTooltip} position='down' message='Cart is empty'><FontAwesomeIcon icon='shopping-cart' aria-hidden="true"/></WithTooltip></WithBadge>
             </NavigationItem>
         </div>
+
     </ul>
 );
 
