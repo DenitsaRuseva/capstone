@@ -150,6 +150,9 @@ class Layout extends Component {
 
     
     removeProductHandller = (productId, index) => {
+        if(this.state.productsInCartIds.length === 1){
+            this.resetProductsInCatrHandler();
+        };
         const updatedTotalPrice = (this.state.totalPrice*1000 - (this.props.allProducts[productId].price*this.state.quantityOfEachProducts[index]*1000))/1000; 
         const updatedproductsInCartIds = removeArrayElement(this.state.productsInCartIds, index);
         const updatedQuantitiesOfEachProducts = removeArrayElement(this.state.quantityOfEachProducts, index);
