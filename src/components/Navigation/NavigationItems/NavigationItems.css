@@ -39,6 +39,17 @@ nav.sm-only ul.navigationItems > li.navigationItem:hover {
     background-color: unset;
 }
 
+nav.sm-only ul.navigationItems > li.navigationItem a {
+    color: #cccccc;
+    height: auto;
+    line-height: unset;
+}
+
+nav.sm-only ul.navigationItems > li.navigationItem a.active,
+nav.sm-only ul.navigationItems > li.navigationItem a:hover {
+    color: white;
+}
+
 
 @media only screen and (min-width: 600px) {
     .navigationItems {

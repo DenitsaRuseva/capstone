@@ -10,6 +10,7 @@
 
 .badge-container.show-badge {
     transform: scale(1.1);
+    color: white;
 }
 
 .badge-container.show-badge svg {

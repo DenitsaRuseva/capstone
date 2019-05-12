@@ -16,7 +16,7 @@
     /* border-left: 3px solid #003300; */
     /* border-right: 3px solid #003300; */
     overflow: hidden;
-    z-index: 100;
+    /* z-index: 100; */
 }
 
 .side-bar-wrapper .side-bar-container {

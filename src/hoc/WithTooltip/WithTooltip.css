@@ -49,7 +49,12 @@ ul.navigationItems > li.navigationItem > a .tooltip-container {
     opacity: 1;
 }
 
-ul.navigationItems > li.navigationItem > a:hover .tooltip-container > .tooltip + .tooltip-text{
+/* ul.navigationItems > li.navigationItem > a:hover .tooltip-container > .tooltip + .tooltip-text{
+    visibility: visible;
+    opacity: 1;
+} */
+
+ul.navigationItems > li.navigationItem > a .tooltip-container > .tooltip + .tooltip-text{
     visibility: visible;
     opacity: 1;
 }
