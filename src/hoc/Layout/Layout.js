@@ -71,7 +71,10 @@ class Layout extends Component {
     };
 
     changeProductInCartQuantityHandler = (enteredQuantity, productId, index) => { //Used in cart
-        const quantity = Math.floor(enteredQuantity);
+        let quantity = Math.floor(enteredQuantity);
+        if(quantity < 0){
+            quantity = 0;
+        };
 
         //boolean; hold reduce to current product
         const productQuantityReduce = (quantity) > this.props.allProducts[productId].stock;

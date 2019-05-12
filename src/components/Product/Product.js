@@ -43,8 +43,11 @@ class Product extends Component {
                 };
         };
 
-        quantityChangeHandler =(event) => {
-                const quantity = Math.floor(event.target.value);
+        quantityChangeHandler = (event) => {
+                let quantity = Math.floor(event.target.value);
+                if(quantity < event.target.min){
+                quantity = 0;
+                };
                 const reduce = quantity > this.props.allProducts[this.state.productId].stock;
                 let newQuantity = reduce ? this.props.allProducts[this.state.productId].stock : quantity;
                 this.setState({productQuantity: newQuantity, reduce: reduce});
