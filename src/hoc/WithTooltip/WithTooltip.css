@@ -3,6 +3,10 @@
     position: relative;
 }
 
+ul.navigationItems > li.navigationItem > a .tooltip-container {
+    width: 100%;
+}
+
 .tooltip-text {
     visibility: hidden;
     position: absolute;
@@ -41,6 +45,11 @@
 }
 
 .tooltip-container > .tooltip:hover + .tooltip-text{
+    visibility: visible;
+    opacity: 1;
+}
+
+ul.navigationItems > li.navigationItem > a:hover .tooltip-container > .tooltip + .tooltip-text{
     visibility: visible;
     opacity: 1;
 }

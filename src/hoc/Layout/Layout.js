@@ -236,7 +236,7 @@ class Layout extends Component {
             </WithoutRootDiv>
         );
 
-        const cartRoute = this.state.numberOfProductsInCart !== 0 ? (
+        const cartRoute = this.state.productsInCartIds.length !== 0 ? (
             <PropsRoute 
             path='/cart' 
             exact
