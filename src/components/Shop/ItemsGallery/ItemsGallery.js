@@ -15,12 +15,13 @@ class ItemsGallery extends Component {
     render(){
 
         console.log('in render items gallery');
+        console.log(this.props.productsToShowIds);
         let items;
-        if(this.props.productsToShow.length < 1){
+        if(this.props.productsToShowIds.length < 1){
             items = <div className='items-gallery'>No items to show</div>;
         }
         else {
-            items = this.props.productsToShow.map((id, i) => {
+            items = this.props.productsToShowIds.map((id, i) => {
                 return <Item 
                         key={i} 
                         item={this.props.allProducts[id]}

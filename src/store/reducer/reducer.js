@@ -19,6 +19,8 @@ const initialState = {
     shownCategoryMenu: false,
     clickedCategories: [],
     selectValue: 'none',
+    numberOfProductsInPage: 24,
+    currentPage: 1,
     shopMounted: false,
     productSelected: 0,
     loading: true,
@@ -97,7 +99,7 @@ const saveShopState = (state, action) => {
         currentCategory: action.state.currentCategory,
         currentSubcategory: action.state.currentSubcategory,
         productsToShow: [
-            ...action.state.productsToShow
+            ...action.state.productsToShowIds
         ],
         numberOfProductsInCategory: action.state.numberOfProductsInCategory,
         shownCategoryMenu: action.state.shownCategoryMenu,
@@ -105,6 +107,8 @@ const saveShopState = (state, action) => {
         productSelected: action.state.productSelected,
         selectValue: action.state.selectValue,
         loading: action.state.loading,
+        numberOfProductsInPage: action.state.numberOfProductsInPage,
+        currentPage: action.state.currentPage,
         shopMounted: true
     };
 };
