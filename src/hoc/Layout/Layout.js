@@ -49,7 +49,6 @@ class Layout extends Component {
 
     addNewProductInCart = (productId, quantity) => {
         const productQuantityReduce = quantity > this.props.allProducts[productId].stock; //boolean; hold reduce to current product;
-       
         //check does entered quantity + quantity of product in cart is greater then stock of product
          //if its greater -> updatedQuantity = stock of product
          //if its not -> updatedQuantity = entered quantity + quantity of product in cart
@@ -155,21 +154,24 @@ class Layout extends Component {
     removeProductHandller = (productId, index) => {
         if(this.state.productsInCartIds.length === 1){
             this.resetProductsInCatrHandler();
-        };
-        const updatedTotalPrice = (this.state.totalPrice*1000 - (this.props.allProducts[productId].price*this.state.quantityOfEachProducts[index]*1000))/1000; 
-        const updatedproductsInCartIds = removeArrayElement(this.state.productsInCartIds, index);
-        const updatedQuantitiesOfEachProducts = removeArrayElement(this.state.quantityOfEachProducts, index);
-        const updatedQuantityReduce = removeArrayElement(this.state.quantityReduce, index);
-        const updatedNumberOfProductsInCart = sumArrayElements(updatedQuantitiesOfEachProducts);
+        }
+        else {
+            const updatedTotalPrice = (this.state.totalPrice*1000 - (this.props.allProducts[productId].price*this.state.quantityOfEachProducts[index]*1000))/1000; 
+            const updatedproductsInCartIds = removeArrayElement(this.state.productsInCartIds, index);
+            const updatedQuantitiesOfEachProducts = removeArrayElement(this.state.quantityOfEachProducts, index);
+            const updatedQuantityReduce = removeArrayElement(this.state.quantityReduce, index);
+            const updatedNumberOfProductsInCart = sumArrayElements(updatedQuantitiesOfEachProducts);
 
 
-        this.setState({
-            productsInCartIds: updatedproductsInCartIds,
-            quantityOfEachProducts: updatedQuantitiesOfEachProducts,
-            totalPrice: updatedTotalPrice,
-            quantityReduce: updatedQuantityReduce,
-            numberOfProductsInCart: updatedNumberOfProductsInCart
-        });
+            this.setState({
+                productsInCartIds: updatedproductsInCartIds,
+                quantityOfEachProducts: updatedQuantitiesOfEachProducts,
+                totalPrice: updatedTotalPrice,
+                quantityReduce: updatedQuantityReduce,
+                numberOfProductsInCart: updatedNumberOfProductsInCart
+            });
+        }
+       
     };
 
     makeOrderHandler = (formIsValid) => {
@@ -205,7 +207,13 @@ class Layout extends Component {
 
     resetProductsInCatrHandler = () => {
         this.props.history.replace('/');
-        this.setState({productsInCartIds: [], quantityOfEachProducts: [], totalPrice: [], orderMade: false, numberOfProductsInCart: 0})
+        this.setState({
+            productsInCartIds: [],
+            quantityOfEachProducts: [], 
+            totalPrice: 0, 
+            quantityReduce: [],
+            orderMade: false, 
+            numberOfProductsInCart: 0})
     };
 
     showProductPageHandler = (id) => {
