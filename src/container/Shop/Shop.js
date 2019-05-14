@@ -198,7 +198,8 @@ class Shop extends Component {
                 currentSubcategory: 'all',
                 productsToShowIds: productsToShowIds,
                 numberOfProductsInCategory: productsToShowIds.length,
-                clickedCategories: clickedCategories
+                clickedCategories: clickedCategories,
+                currentPage: 1
             });
         }
         else {
@@ -213,7 +214,8 @@ class Shop extends Component {
                 currentSubcategory: 'all',
                 productsToShowIds: productsToShowIds,
                 numberOfProductsInCategory: numberOfProductsInCategory,
-                clickedCategories: clickedCategories
+                clickedCategories: clickedCategories,
+                currentPage: 1
             });
         };
     };
@@ -238,7 +240,8 @@ class Shop extends Component {
             currentSubcategory: subcategoryClicked,
             productsToShowIds: productsToShowIds,
             shownCategoryMenu: false,
-            numberOfProductsInCategory: numberOfProductsInCategory
+            numberOfProductsInCategory: numberOfProductsInCategory,
+            currentPage: 1
         });
     };
 
@@ -263,7 +266,8 @@ class Shop extends Component {
                         order: 'none'
                     },
                     productsToShowIds: [...productsToShowIds],
-                    selectValue: event.target.value
+                    selectValue: event.target.value,
+                    currentPage: 1
                 });
             }
             else if(this.state.sort.sortBy === sortDate[0]){
@@ -274,7 +278,8 @@ class Shop extends Component {
                         order: sortDate[1]
                     },
                     productsToShowIds: updatedproductsToShowIds,
-                    selectValue: event.target.value
+                    selectValue: event.target.value,
+                    currentPage: 1
                 });
             }
             else {
@@ -286,7 +291,8 @@ class Shop extends Component {
                         order: sortDate[1]
                     },
                     productsToShowIds: productsToShowIds,
-                    selectValue: event.target.value
+                    selectValue: event.target.value,
+                    currentPage: 1
                 }); 
             };
         };
@@ -337,7 +343,8 @@ class Shop extends Component {
             this.setState({
                 showInStockOnly: false,
                 productsToShowIds: [...productsToShowIds],
-                numberOfProductsInCategory: numberOfProductsInCategory
+                numberOfProductsInCategory: numberOfProductsInCategory,
+                currentPage: 1
             });
         }
         else {
@@ -346,7 +353,8 @@ class Shop extends Component {
             this.setState({
                 showInStockOnly: true,
                 productsToShowIds: [...productsToShowIds],
-                numberOfProductsInCategory: numberOfProductsInCategory
+                numberOfProductsInCategory: numberOfProductsInCategory,
+                currentPage: 1
             });
         };
     };
@@ -365,6 +373,7 @@ class Shop extends Component {
 
     render(){
         console.log('in render shop');
+        const possiblePages = Math.trunc(this.state.productsToShowIds.length / this.state.numberOfProductsInPage) + (this.state.productsToShowIds.length % this.state.numberOfProductsInPage === 0 ? 0 : 1)
         let shop = <Spinner/>;
         if(!this.state.loading && !this.props.error){
             shop = (
@@ -389,13 +398,14 @@ class Shop extends Component {
                             productsToShowIds={this.state.productsToShowIds.slice((this.state.currentPage - 1)*this.state.numberOfProductsInPage, (this.state.currentPage - 1)*this.state.numberOfProductsInPage + this.state.numberOfProductsInPage)}
                             clickOnAddBtn={this.props.addProductToCart} 
                             clickOnImg={this.props.showProductPage}/>
+                        {possiblePages > 1 ?
                         <PropsRoute path='/shopping' component={PageNumbers}
                             currentPage={this.state.currentPage}
                             possiblePages=
-                            {Math.trunc(this.state.productsToShowIds.length / this.state.numberOfProductsInPage) + (this.state.productsToShowIds.length % this.state.numberOfProductsInCategory === 0 ? 0 : 1)} 
+                            {possiblePages} 
                             clickToPageNumber={this.showPageHandler}
                             goToNextPage={this.showProductsOnNextPage}
-                            goToPreviousPage={this.showProductsOnPreviousPage}/>
+                            goToPreviousPage={this.showProductsOnPreviousPage}/> : null}
                 </div>
             );
         };

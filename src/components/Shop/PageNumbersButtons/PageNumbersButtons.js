@@ -6,8 +6,7 @@ import PageNumbersArrows from './PageNumbersArrows/PageNumbersArrows';
 //props.possiblePages holds the length of productsToShow, which is array from arrays of 
 // max 12 items
 const pageButtons = (props) => {
-  
-    
+    console.log(props.currentPage - 2 <= 0);
     let buttons = [];
     let firstPageButton, secondPageButton, thirdPageButton, fourthPageButton, fifthPageButton;
         firstPageButton = (props.currentPage - 2 <= 0) ?
@@ -39,7 +38,7 @@ const pageButtons = (props) => {
             buttons = buttons.slice(0,3)
         }
         else if(buttons.length === 5){
-            buttons = buttons.slice(1,3);
+            buttons = buttons.slice(1, 4);
         };
         buttons.unshift(
             <PageNumbersArrows 
