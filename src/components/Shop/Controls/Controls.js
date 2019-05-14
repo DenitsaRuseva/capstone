@@ -13,7 +13,7 @@ const controls = (props) => {
             <div className='controls'>
                 <CategoryName category={props.category}/>
                 <Sort onSort={props.onSort} selectValue={props.selectValue}/>
-                <InStockCheckbox onInStockClick={props.onInStockClick}/>
+                <InStockCheckbox onInStockClick={props.onInStockClick} showInStockOnly={props.showInStockOnly}/>
                 <NumberOfProducts 
                     category={props.category}
                     numberOnShownProducts={props.numberOnShownProducts}

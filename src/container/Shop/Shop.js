@@ -394,6 +394,7 @@ class Shop extends Component {
                             numberOnShownProducts={possiblePages === this.state.currentPage || possiblePages === 0 ?
                             this.state.productsToShowIds.length : this.state.numberOfProductsInPage*this.state.currentPage}
                             selectValue={this.state.selectValue}
+                            showInStockOnly={this.state.showInStockOnly}
                         />
                         <PropsRoute path='/shopping' component={ItemsGallery} 
                             productsToShowIds={this.state.productsToShowIds.slice((this.state.currentPage - 1)*this.state.numberOfProductsInPage, (this.state.currentPage - 1)*this.state.numberOfProductsInPage + this.state.numberOfProductsInPage)}
