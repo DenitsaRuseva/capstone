@@ -391,7 +391,8 @@ class Shop extends Component {
                             category={this.state.currentCategory}
                             onInStockClick={this.inStockClickHandler}
                             numberOfProductsInCategory={this.state.numberOfProductsInCategory}
-                            numberOnShownProducts={this.state.productsToShowIds.length}
+                            numberOnShownProducts={possiblePages === this.state.currentPage || possiblePages === 0 ?
+                            this.state.productsToShowIds.length : this.state.numberOfProductsInPage*this.state.currentPage}
                             selectValue={this.state.selectValue}
                         />
                         <PropsRoute path='/shopping' component={ItemsGallery} 
@@ -424,8 +425,8 @@ class Shop extends Component {
                             onSort={() => null} 
                             category={this.state.currentCategory}
                             onInStockClick={() => null}
-                            numberOfProductsInCategory={this.state.numberOfProductsInCategory}
-                            numberOnShownProducts={this.state.productsToShowIds.length}
+                            numberOfProductsInCategory={0}
+                            numberOnShownProducts={0}
                             selectValue={this.state.selectValue}
                         /> 
                 </div>
