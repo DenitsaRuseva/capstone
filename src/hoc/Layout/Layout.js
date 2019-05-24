@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as action from '../../store/actions/index';
-import Carousel from '../../container/Carousel/Carousel';
 import Shop from '../../container/Shop/Shop';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
@@ -17,6 +16,7 @@ import './Layout.css';
 import WithoutRootDiv from '../WithoutRootDiv/WithoutRootDiv';
 import WithErrorHandler from '../WithErrorHandler/WithErrorHandler';
 import NotFound from '../../components/UI/NotFound/NotFound';
+import Carousel from '../../container/Carousel/Carousel';
 import axios from 'axios';
 import {removeArrayElement, addElementToArray, updateArrayElement, sumArrayElements} from '../../utility';
 

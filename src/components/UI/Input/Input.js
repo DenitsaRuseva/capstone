@@ -1,9 +1,10 @@
 import React from 'react';
 import './Input.css';
+import WithoutRootDiv from '../../../hoc/WithoutRootDiv/WithoutRootDiv';
 
 
 const input = ( props ) => {
-    const inputClasses = ["inputElement"];
+    const inputClasses = ["inputElement" , props.class];
 
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push('invalid');
@@ -58,9 +59,12 @@ const input = ( props ) => {
     };
 
     return (
+        props.label ? (
         <div className='input'>
             <label className='label'><span>{props.label}</span>{inputElement}</label>
         </div>
+        ) :
+        <WithoutRootDiv>{inputElement}</WithoutRootDiv>
     );
 
 };

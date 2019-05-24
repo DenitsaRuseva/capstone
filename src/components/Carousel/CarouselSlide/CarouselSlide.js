@@ -1,11 +1,10 @@
 import React from 'react';
-import './CarouselSlide.css';
+import './CarouselSlideNew.css';
 import { connect } from 'react-redux';
 
 
 
 const carouselSlide = (props) => {
-
         const attachedClassess = props.id === props.currentSlideId ? 'carousel-slide shown' : 'carousel-slide'; //rubric11
         const images = props.imagesIds.map((id, i) => {
             return (

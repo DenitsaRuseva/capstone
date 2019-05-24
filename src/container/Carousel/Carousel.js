@@ -16,6 +16,26 @@ class Carousel extends Component {
         toggleSlides: false,
         interval: () => null
     }
+
+
+
+    componentDidMount(){
+        document.addEventListener("keydown", this.handleKeyDown);
+    }
+    
+    
+    componentWillUnmount() {
+        document.removeEventListener("keydown", this.handleKeyDown);
+    }
+
+    handleKeyDown = (event) => {
+        switch(event.keyCode){
+            case 39: this.showNextSlideHandler(); break;
+            case 37: this.showPreviousSlideHandler(); break;
+            default: return;
+        };
+    };
+
 // rubric07
     showNextSlideHandler = () => {
         this.setState((prevState, props) => {
@@ -34,13 +54,7 @@ class Carousel extends Component {
         this.setState({showSlideWithId: id*1});
     };
 
-    showImgHandler = (event) => {
-        event.target.style.filter = 'blur(0px)';
-    };
-
-    showProductHandler = (id) => {
-        this.props.showProductPage(id*1);
-    };
+   
 
 //rubric10
     toggleSllidesHandler = () => {
