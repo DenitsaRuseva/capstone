@@ -3,7 +3,8 @@ import CategoryName from './CategoryName/CategoryName';
 import Sort from './Sort/Sort';
 import InStockCheckbox from './InStockCheckbox/InStockCheckbox';
 import NumberOfProducts from './NumberOfProducts/NumberOfProducts';
-import './Controls.css';
+import NumberOfItemsPerPage from './NumberOfItemsPerPage/NumberOfitemsPerPage';
+import './ControlsNew.css';
 
 
 const controls = (props) => {
@@ -11,9 +12,17 @@ const controls = (props) => {
     return(
         <div className="controls-container">
             <div className='controls'>
-                <CategoryName category={props.category}/>
+            
+                <CategoryName label='Category' category={props.category}/>
+                <CategoryName label='Subcategory' category={props.subcategory}/>
                 <Sort onSort={props.onSort} selectValue={props.selectValue}/>
                 <InStockCheckbox onInStockClick={props.onInStockClick} showInStockOnly={props.showInStockOnly}/>
+                <NumberOfItemsPerPage 
+                    changed={props.changeNumberOfItemsPerPage}
+                    numberOnShownProducts={props.numberOnShownProducts}
+                    possiblePages={props.possiblePages}
+                    selectValue={props.numberOfProductsInPageSelectValue}
+                    productsToShow={props.numberOfProductsInCategory}/>
                 <NumberOfProducts 
                     category={props.category}
                     numberOnShownProducts={props.numberOnShownProducts}

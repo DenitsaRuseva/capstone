@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Item from './Item/Item';
-import './ItemsGallery.css';
+import './ItemsGalleryNew.css';
 import { connect } from 'react-redux';
 
 

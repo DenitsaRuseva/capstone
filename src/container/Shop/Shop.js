@@ -5,7 +5,7 @@ import ShopSideBar from '../../components/Shop/ShopSideBar/ShopSideBar';
 import ItemsGallery from '../../components/Shop/ItemsGallery/ItemsGallery';
 import PropsRoute from '../../hoc/Routes/PropsRoute'; 
 import Spinner from '../../components/UI/Spinner/Spinner';
-import './Shop.css';
+import './ShopNew.css';
 import WithoutRootDiv from '../../hoc/WithoutRootDiv/WithoutRootDiv';
 import PageNumbers from '../../components/Shop/PageNumbersButtons/PageNumbersButtons';
 import {flattenArray} from '../../utility';
@@ -32,7 +32,8 @@ class Shop extends Component {
         selectValue: 'none_none',
         selectedProduct: '',
         numberOfProductsInPage: 24,
-        currentPage: 1
+        currentPage: 1,
+        numberOfProductsInPageSelectValue: '24'
     };
 
 
@@ -371,6 +372,11 @@ class Shop extends Component {
         this.setState(prevState => ({currentPage: prevState.currentPage - 1}))
     };
 
+    changeNumberOfItemsPerPageHandler = (numb) => {
+            numb === 'all' ? this.setState({numberOfProductsInPage: this.state.numberOfProductsInCategory, numberOfProductsInPageSelectValue: numb, currentPage: 1}) :
+            this.setState({numberOfProductsInPage: numb, numberOfProductsInPageSelectValue: numb, currentPage: 1});
+    };
+
     render(){
         console.log('in render shop');
         const possiblePages = Math.trunc(this.state.productsToShowIds.length / this.state.numberOfProductsInPage) + (this.state.productsToShowIds.length % this.state.numberOfProductsInPage === 0 ? 0 : 1)
@@ -387,8 +393,12 @@ class Shop extends Component {
                             currentCategory={this.state.currentCategory}
                             clickedCategories={this.state.clickedCategories}/>
                         <PropsRoute path='/shopping' component={Controls} 
+                            numberOfProductsInPageSelectValue={this.state.numberOfProductsInPageSelectValue}
+                            changeNumberOfItemsPerPage={this.changeNumberOfItemsPerPageHandler}
+                            possiblePages={possiblePages}
                             onSort={this.sortItemsHandler} 
                             category={this.state.currentCategory}
+                            subcategory={this.state.currentSubcategory}
                             onInStockClick={this.inStockClickHandler}
                             numberOfProductsInCategory={this.state.numberOfProductsInCategory}
                             numberOnShownProducts={possiblePages === this.state.currentPage || possiblePages === 0 ?
@@ -423,6 +433,8 @@ class Shop extends Component {
                             currentCategory={this.state.currentCategory}
                             clickedCategories={this.state.clickedCategories}/>
                         <PropsRoute path='/shopping' component={Controls} 
+                            changeNumberOfItemsPerPage={() => null}
+                            possiblePages={possiblePages}
                             onSort={() => null} 
                             category={this.state.currentCategory}
                             onInStockClick={() => null}

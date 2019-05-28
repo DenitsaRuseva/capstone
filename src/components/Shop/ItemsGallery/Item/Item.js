@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ImageContainer from './ImageContainer/ImageContainer';
 import Button from '../../../UI/Button/Button';
-import './Item.css';
+import './ItemNew.css';
 
 const item = (props) => {
 

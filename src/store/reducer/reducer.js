@@ -21,6 +21,7 @@ const initialState = {
     selectValue: 'none',
     numberOfProductsInPage: 24,
     currentPage: 1,
+    numberOfProductsInPageSelectValue: '24',
     shopMounted: false,
     productSelected: 0,
     loading: true,
@@ -109,6 +110,7 @@ const saveShopState = (state, action) => {
         loading: action.state.loading,
         numberOfProductsInPage: action.state.numberOfProductsInPage,
         currentPage: action.state.currentPage,
+        numberOfProductsInPageSelectValue: action.state.numberOfProductsInPageSelectValue,
         shopMounted: true
     };
 };

@@ -50,6 +50,20 @@ const input = ( props ) => {
                 </div>
                 );
             break;
+            case ( 'select' ):
+                    inputElement = (
+                        <select
+                            disabled={props.disabled}
+                            className={inputClasses.join(' ')}
+                            onChange={(event) => props.changed(event.target.value)}>
+                            {props.elementConfig.options.map((option, i) => (
+                                <option key={i} value={option.name} disabled={option.disabled} selected={props.selected}>
+                                    {option.name}
+                                </option>
+                            ))}
+                        </select>
+                    );
+                break;
         default:
             inputElement = <input
                 className={inputClasses.join(' ')}
