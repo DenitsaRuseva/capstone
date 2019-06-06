@@ -72,7 +72,7 @@
 
 .sort-label > .content-wrapper select {
     margin-bottom: 3px;
-    max-width: 50vw;
+    max-width: 100%;
 }
 
 .instock-label input {

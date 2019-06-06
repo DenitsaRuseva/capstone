@@ -57,12 +57,17 @@ const input = ( props ) => {
                             className={inputClasses.join(' ')}
                             onChange={(event) => props.changed(event.target.value)}>
                             {props.elementConfig.options.map((option, i) => (
-                                <option key={i} value={option.name} disabled={option.disabled} selected={props.selected}>
+                                <option key={i} value={option.value} disabled={option.disabled} selected={props.selected}>
                                     {option.name}
                                 </option>
                             ))}
                         </select>
                     );
+                break;
+            case ('checkbox'):
+                inputElement = (
+                    <input type="checkbox" onChange={props.changed} checked={props.checked}/>
+                );
                 break;
         default:
             inputElement = <input

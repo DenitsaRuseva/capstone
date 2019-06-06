@@ -4,7 +4,6 @@
     max-width: 70%;
     left: 0;
     top: 56px;
-    z-index: 500;
     /* background-color: #264d00; */
     background-color: #408000;
     padding-bottom: 30px;
@@ -16,6 +15,7 @@
     -o-transition: transform 0.3s ease-out;
     transition: transform 0.3s ease-out;
     transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    z-index: 500;
 }
 
 @media (min-width: 600px) {

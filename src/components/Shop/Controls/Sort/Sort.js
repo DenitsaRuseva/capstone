@@ -1,53 +1,64 @@
 import React, {Component} from 'react';
+import Input from '../../../UI/Input/Input';
 
 class Sort extends Component {
 
     state = {
+        elementConfig: {
         options: [
             {
                 value: 'none_none',
-                innerHtml: 'none'
+                name: 'none'
             },
             {
                 value: 'name_ascending',
-                innerHtml: 'name (A-Z)'
+                name: 'name (A-Z)'
             }, {
                 value: 'name_descending',
-                innerHtml: 'name (Z-A)'
+                name: 'name (Z-A)'
             }, {
                 value: 'price_ascending',
-                innerHtml: 'price (lowest first)'
+                name: 'price (lowest first)'
             }, {
                 value: 'price_descending',
-                innerHtml: 'price (highest first)'
+                name: 'price (highest first)'
             }, {
                 value: 'rating_ascending',
-                innerHtml: 'rating (lowest first)'
+                name: 'rating (lowest first)'
             }, {
                 value: 'rating_descending',
-                innerHtml: 'rating (highest first)'
+                name: 'rating (highest first)'
             }
         ],
         defaultValue: 'none'
+    }
     };
 
     render(){
-        const options = this.state.options.map((o, i) => {
-           return <option key={i} value={o.value} selected={o.selected}>{o.innerHtml}</option>
-        });
-        console.log('in sort');
-        return(
-            <label className='sort-label'>
-                <div className='content-wrapper'>
-                    <span>Sort by:&nbsp;</span>
-                    <select 
-                        onChange={(event) => this.props.onSort(event)} value={this.props.selectValue}>
-                        {options}
-                    </select>  
-                </div>                    
-            </label>
-        );
-    };
+        return <Input 
+        elementType="select"
+        label='Sort by: &nbsp;'
+        elementConfig={this.state.elementConfig}
+        changed={(value) => this.props.onSort(value)}/>
+    }
+
+    // render(){
+    //     const options = this.state.options.map((o, i) => {
+    //        return <option key={i} value={o.value} selected={o.selected}>{o.innerHtml}</option>
+    //     });
+    //     console.log('in sort');
+    //     return(
+    //         <label className='sort-label'>
+    //             <div className='content-wrapper'>
+    //                 <span>Sort by:&nbsp;</span>
+    //                 <select 
+    //                     onChange={(event) => this.props.onSort(event)} value={this.props.selectValue}>
+    //                     {options}
+    //                 </select>  
+    //             </div>                    
+    //         </label>
+    //     );
+    // };
 };
 
 export default Sort;

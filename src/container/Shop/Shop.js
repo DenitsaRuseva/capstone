@@ -8,8 +8,11 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import './ShopNew.css';
 import WithoutRootDiv from '../../hoc/WithoutRootDiv/WithoutRootDiv';
 import PageNumbers from '../../components/Shop/PageNumbersButtons/PageNumbersButtons';
+import CategoryInfo from '../../components/Shop/CategoryInfo/CategoryInfo';
 import {flattenArray} from '../../utility';
 import * as action from '../../store/actions/index';
+import WithErrorHandler from '../../hoc/WithErrorHandler/WithErrorHandler';
+import axios from 'axios';
 
 
 
@@ -200,7 +203,8 @@ class Shop extends Component {
                 productsToShowIds: productsToShowIds,
                 numberOfProductsInCategory: productsToShowIds.length,
                 clickedCategories: clickedCategories,
-                currentPage: 1
+                currentPage: 1,
+                shownCategoryMenu: false
             });
         }
         else {
@@ -252,8 +256,8 @@ class Shop extends Component {
         } );
     };
 
-    sortItemsHandler = (event) => {
-        const sortCriteria = event.target.value;
+    sortItemsHandler = (value) => {
+        const sortCriteria = value;
         const sortDate = sortCriteria.split('_');
         if(this.state.sort.sortBy === sortDate[0] && this.state.sort.order === sortDate[1]){
             return;
@@ -267,7 +271,7 @@ class Shop extends Component {
                         order: 'none'
                     },
                     productsToShowIds: [...productsToShowIds],
-                    selectValue: event.target.value,
+                    selectValue: value,
                     currentPage: 1
                 });
             }
@@ -279,7 +283,7 @@ class Shop extends Component {
                         order: sortDate[1]
                     },
                     productsToShowIds: updatedproductsToShowIds,
-                    selectValue: event.target.value,
+                    selectValue: value,
                     currentPage: 1
                 });
             }
@@ -292,7 +296,7 @@ class Shop extends Component {
                         order: sortDate[1]
                     },
                     productsToShowIds: productsToShowIds,
-                    selectValue: event.target.value,
+                    selectValue: value,
                     currentPage: 1
                 }); 
             };
@@ -379,12 +383,13 @@ class Shop extends Component {
 
     render(){
         console.log('in render shop');
+        console.log(this.state);
         const possiblePages = Math.trunc(this.state.productsToShowIds.length / this.state.numberOfProductsInPage) + (this.state.productsToShowIds.length % this.state.numberOfProductsInPage === 0 ? 0 : 1)
         let shop = <Spinner/>;
         if(!this.state.loading && !this.props.error){
             shop = (
                 <div className='shop'>
-                        <PropsRoute path='/shopping' 
+                    <PropsRoute path='/shopping' 
                             component={ShopSideBar} 
                             clickOnCategory={this.sideBarCategoryClickHandler}
                             clickOnSubcategory={this.sideBarSubcategoryClickHandler}
@@ -392,13 +397,17 @@ class Shop extends Component {
                             shownCategoryMenu={this.state.shownCategoryMenu}
                             currentCategory={this.state.currentCategory}
                             clickedCategories={this.state.clickedCategories}/>
+                        <PropsRoute path='/shopping' component={CategoryInfo}
+                            category={this.state.currentCategory}
+                            subcategory={this.state.currentSubcategory}/>
+                        
                         <PropsRoute path='/shopping' component={Controls} 
                             numberOfProductsInPageSelectValue={this.state.numberOfProductsInPageSelectValue}
                             changeNumberOfItemsPerPage={this.changeNumberOfItemsPerPageHandler}
                             possiblePages={possiblePages}
                             onSort={this.sortItemsHandler} 
                             category={this.state.currentCategory}
-                            subcategory={this.state.currentSubcategory}
+                            // subcategory={this.state.currentSubcategory}
                             onInStockClick={this.inStockClickHandler}
                             numberOfProductsInCategory={this.state.numberOfProductsInCategory}
                             numberOnShownProducts={possiblePages === this.state.currentPage || possiblePages === 0 ?
@@ -422,6 +431,7 @@ class Shop extends Component {
             );
         };
         if(this.props.error){
+            alert('in');
             shop = (
                 <div className='shop'>
                         <PropsRoute path='/shopping' 
@@ -432,6 +442,9 @@ class Shop extends Component {
                             shownCategoryMenu={() => null}
                             currentCategory={this.state.currentCategory}
                             clickedCategories={this.state.clickedCategories}/>
+                        <PropsRoute path='/shopping' component={CategoryInfo}
+                            category={this.state.currentCategory}
+                            subcategory={this.state.currentSubcategory}/>
                         <PropsRoute path='/shopping' component={Controls} 
                             changeNumberOfItemsPerPage={() => null}
                             possiblePages={possiblePages}
@@ -480,4 +493,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Shop);
+export default connect(mapStateToProps, mapDispatchToProps)(WithErrorHandler(Shop, axios));

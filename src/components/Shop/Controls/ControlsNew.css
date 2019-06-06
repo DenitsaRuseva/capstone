@@ -1,0 +1,96 @@
+.controls-container {
+    position: relative;
+    width: 100%;
+    top: 50px;
+    float: right;
+}
+
+@media only screen and (min-width: 510px){
+    .controls-container {
+        top: 0px;
+    }
+}
+
+@media only screen and (min-width: 900px){
+    .controls-container {
+        width: 75%;
+    }
+}
+
+.controls {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls > .control-numb-of-items, .controls .control-instock {
+    flex: 1;
+    width: 150px;
+    max-width: 100%;
+}
+
+.controls .control-sort {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px){
+    .controls > .control-numb-of-items,
+    .controls .control-instock {
+        width: 30%;
+    }
+
+    .controls .control-sort {
+        width: 40%;
+    }
+}
+
+.controls .control-numb-of-items .input > label,
+.controls .control-instock .input > label,
+.controls .control-sort .input > label {
+    display: inline-flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+}
+
+.controls .control-sort .input > label {
+    flex-wrap: wrap;
+}
+
+.controls .input > label > span {
+    padding: 17px 5px 17px 0px;
+    line-height: 16px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Exo 2', sans-serif;
+    text-align: right;
+}
+
+.controls .control-numb-of-items .input > label > span,
+.controls .control-instock .input > label > span,
+.controls .control-sort .input > label > span {
+    /* width: calc(100% - 50px); */
+    min-width: 80px;
+    float: left;
+   /* height: 50px; */
+    
+}
+
+.controls > .control-numb-of-items .input > label select.inputElement,
+.controls > .control-instock .input > label select.inputElement {
+    width: 50px;
+    float: right;
+    /* height: 22px; */
+    margin: 0px;
+}
+
+.controls > .control-sort .input > label select.inputElement{
+    width: 150px;
+    max-width: 100%;
+    float: right;
+    margin: 0px;
+}
+

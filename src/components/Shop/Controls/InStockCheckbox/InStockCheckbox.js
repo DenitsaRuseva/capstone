@@ -1,16 +1,10 @@
 import React, {PureComponent} from 'react';
+import Input from '../../../UI/Input/Input';
 
 class InStockCheckbox extends PureComponent {
     render(){
-        console.log('in instock');
-    return (
-        <label className='instock-label'>
-            <div className='content-wrapper'>
-                <input type="checkbox" onChange={this.props.onInStockClick} checked={this.props.showInStockOnly}/>
-                <span>&nbsp;In stock only</span>
-            </div>
-        </label>
-    );
+    console.log('in instock');
+    return <Input elementType='checkbox' label="In stock only&nbsp;" changed={this.props.onInStockClick} checked={this.props.showInStockOnly}/>
     }
 };
 

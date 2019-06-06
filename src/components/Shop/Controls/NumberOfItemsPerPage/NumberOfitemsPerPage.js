@@ -7,24 +7,28 @@ const numberOfItemsPerPage = (props) => {
         options: [
             {
                 name: '24',
+                value: "24",
                 disabled: false,
                 selected: props.selectValue == '24'
              },
             {
                 name: '36',
+                value: "36",
                 disabled:  props.numberOnShownProducts*props.possiblePages <= 36,
                 selected: props.selectValue == '36'
             },
             {
             name: 'all',
+            value: 'all',
             disabled: props.numberOnShownProducts*props.possiblePages <= props.productsToShow,
             selected: props.selectValue == 'all'
             }]
     };
     return (
         <WithoutRootDiv>
-        <span>Items per page:</span>
+        {/* <span>Items per page:</span> */}
         <Input 
+        label="Items per page:"
         elementType='select'
         elementConfig={options}
         changed={props.changed}

@@ -10,10 +10,12 @@ const shopSideBar = (props) => {
     console.log('in shop side bar');
     return (
         <div className={attachedClasses}>
-            <div className='hide-on-sm'> 
-                <p className='text'>Shop by category</p>
+            <div className='hide-on-md'> 
+                <div className='md-only'><span>Shop by category</span></div>
             </div>
-                <div className='md-only text' onClick={() => props.toggleCategoryMenu()}>Shop by category <FontAwesomeIcon icon="chevron-down"/></div>
+            <div className='hide-on-l'>
+                <div className='md-only' onClick={() => props.toggleCategoryMenu()}><span>Shop by category <FontAwesomeIcon icon="chevron-down"/></span></div>
+            </div>
                 <div className='side-bar-container'>
                     <div className='side-bar'> 
                         <CategoryButtons
