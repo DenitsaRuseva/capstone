@@ -28,7 +28,7 @@ const numberOfItemsPerPage = (props) => {
         <WithoutRootDiv>
         {/* <span>Items per page:</span> */}
         <Input 
-        label="Items per page:"
+        label="Items per page: &nbsp;"
         elementType='select'
         elementConfig={options}
         changed={props.changed}
