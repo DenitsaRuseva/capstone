@@ -1,13 +1,20 @@
 .carousel-page{
   width: 100%;
-  min-height: calc(100vh - 129px); /*56px toolbar, 73px footer*/
+  height: calc(100vh - 129px); /*56px toolbar, 73px footer*/
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
+@media (orientation: landscape){
+    .carousel-page{
+        align-items: baseline;
+    }
+}
+
 .carousel-container{
     width: 100%;
+    height: calc(100% - 85px);
 }
 
 
@@ -15,6 +22,7 @@
     position: relative;
     width: 100%;
     height: 500px;
+    max-height: 100%;
     /* margin-left: auto; */
     /* margin-right: auto; */
     background-color: white;

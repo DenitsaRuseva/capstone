@@ -55,6 +55,14 @@
     }
 }
 
+@media (orientation: landscape){
+    .img-container-carousel{
+        width: 33.3333%;
+        height: 50%;
+        padding: 0px;
+    }
+}
+
 .img-container-carousel > img {
     visibility: hidden;
     max-width: 100%;
