@@ -1,11 +1,22 @@
+.carousel-page{
+  width: 100%;
+  min-height: calc(100vh - 129px); /*56px toolbar, 73px footer*/
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.carousel-container{
+    width: 100%;
+}
+
+
 .carousel {
     position: relative;
-    margin-top: 50px;
     width: 100%;
     height: 500px;
     /* margin-left: auto; */
     /* margin-right: auto; */
-    margin-bottom: 25px;
     background-color: white;
 }
 
@@ -40,4 +51,50 @@
     .wellcome {
         font-size: 25px
     }
+}
+
+.carousel-container .input {
+    width: 30%;
+    float: right;
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    position: relative;
+    font-size: 14px;
+    color: #737373;
+    z-index: 100;
+}
+
+.carousel-container .input > .label{
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0px;
+}
+
+.carousel-container .input > .label .inputElement {
+    margin: 0px 0px 0px 5px;
+    padding-top: 2px;
+    display: inline-block;
+    width: unset;
+}
+
+.carousel-container .input > .label > span {
+    height: 14px;
+    padding-left: 0px;
+    order: 2;
+}
+
+.carousel-container .button-container {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+   position: relative;
+   top: -18px;
+
+}
+
+.carousel-container .button-container > a {
+    display: inline-block;
+    height: 22px;
 }

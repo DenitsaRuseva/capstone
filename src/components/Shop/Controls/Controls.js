@@ -3,7 +3,7 @@ import Sort from './Sort/Sort';
 import InStockCheckbox from './InStockCheckbox/InStockCheckbox';
 import NumberOfItemsPerPage from './NumberOfItemsPerPage/NumberOfitemsPerPage';
 import CenteredXYText from '../../UI/Text/CenteredXYText/CenteredXYText';
-import './ControlsNew.css';
+import './ControlsNewNew.css';
 
 
 const controls = (props) => {
@@ -12,7 +12,7 @@ const controls = (props) => {
         <div className="controls-container">
             <div className='shown-products-info'>
                 <CenteredXYText>
-                    {props.numberOnShownProducts} products shown of {props.numberOfProductsInCategory} products {props.category==='all' ? null : " in category"}
+                    {props.numberOnShownProducts}/{props.numberOfProductsInCategory}  products shown
                 </CenteredXYText>
             </div>
                 <div className='controls'>
@@ -24,12 +24,13 @@ const controls = (props) => {
                             selectValue={props.numberOfProductsInPageSelectValue}
                             productsToShow={props.numberOfProductsInCategory}/>
                     </div>
-                    <div className='control-instock'>
-                            <InStockCheckbox onInStockClick={props.onInStockClick} showInStockOnly={props.showInStockOnly}/>
-                    </div>  
+                      
                     <div className='control-sort'>
                             <Sort onSort={props.onSort} selectValue={props.selectValue}/>
                     </div> 
+                    <div className='control-instock'>
+                            <InStockCheckbox onInStockClick={props.onInStockClick} showInStockOnly={props.showInStockOnly}/>
+                    </div>
                 </div>
 
         </div>

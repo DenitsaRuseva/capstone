@@ -1,11 +1,11 @@
 .side-bar {
     display: inline-flex;
     flex-direction: column;
-    /* min-width: 100%; */
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
+    color: saddlebrown;
 }
 
 .side-bar > ul.category-list > li.category-list-item > span,
@@ -14,11 +14,12 @@
     text-overflow: ellipsis;
     width: 100%;
     display: block;
-    overflow: hidden
+    overflow: hidden;
+    text-align: center;
 }
 
 ul.category-list, ul.subcategory-list {
-    background: yellow;
+    background-color: #f2ffe6;
     width: 100%;
     margin: 0px;
     padding: 0px;
@@ -27,6 +28,8 @@ ul.category-list, ul.subcategory-list {
 
 ul.category-list ul.subcategory-list {
     display: none;
+    background-color: #ebebe0;
+    border-top: 3px solid #e6ffcc;
 }
 
 li.category-list-item {
@@ -41,13 +44,14 @@ li.category-list-item > span {
     height: 30px;
     padding: 5px 0px;
     line-height: 20px;
-    box-shadow: inset 0 0 4px #293d3d;
+    /* box-shadow: inset 0 0 4px #293d3d; */
+    box-shadow: inset 0 0 4px #994d00;
     background-color: #f0f5f5;
-    /* text-align: center; */
 }
+
 ul.category-list li.subcategory-list-item {
-    height: 50px;
-    padding: 10px 0px;
+    height: 30px;
+    /* padding: 10px 0px; */
     line-height: 30px;
 }
 
@@ -69,4 +73,43 @@ ul.category-list-item .category-list-item > ul.subcategory-list {
     text-decoration: none;
     margin: 0px;
     padding: 0px;
+    color: inherit;
+}
+
+.subcategory-list-item a {
+    color: #996600;
+}
+
+@media only screen and (min-width: 510px){
+    .side-bar > ul.category-list > li.category-list-item > span,
+    .side-bar > ul.category-list > li.category-list-item ul.subcategory-list > li.subcategory-list-item > a > span {
+        text-align: left;
+        padding-left: 10px;
+    }
+    .side-bar > ul.category-list > li.category-list-item ul.subcategory-list > li.subcategory-list-item > a > span{
+        padding-left: 20px;
+    }
+
+}
+
+@media only screen and (min-width: 900px){
+    li.category-list-item ul.subcategory-list{
+        border-top: none;
+        background-color: unset;
+    }
+    li.category-list-item {
+        border: none;
+    }
+    li.subcategory-list-item{
+        border-top: unset;
+    }
+    li.category-list-item span {
+        box-shadow: none;
+        background-color: #f2ffe6;
+    }
+    .side-bar > ul.category-list > li.category-list-item > span,
+    .side-bar > ul.category-list > li.category-list-item ul.subcategory-list > li.subcategory-list-item > a > span {
+        text-align: center;
+        padding-left: 0px;
+    }
 }

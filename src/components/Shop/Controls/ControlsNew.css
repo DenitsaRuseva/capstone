@@ -20,10 +20,11 @@
 
 .controls {
     width: 100%;
+    padding: 5px 5% 0px 5%;
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     align-self: center;
 }
@@ -31,26 +32,61 @@
 @media only screen and (max-width: 330px){
     .controls {
         flex-direction: column;
+        padding: 0px;
+        padding-top: 5px;
+    }
+}
+
+@media only screen and (min-width: 610px){
+    .controls {
+        flex-wrap: nowrap;
+        /* justify-content: space-around; */
     }
 }
 
 .controls > .control-numb-of-items, .controls .control-instock {
-    flex: 1;
+    /* flex: 1; */
     min-width: 150px;
     max-width: 100%;
 }
 
 .controls .control-sort {
-    width: 100%;
+    /* width: 100%; */
 }
 
-@media only screen and (min-width: 653px){
+@media only screen and (min-width: 600px){
+    .control-numb-of-items {
+        flex-basis: content;
+        flex-grow: 2;
+        align-self: flex-start;
+    }
+    .control-instock {
+        flex-grow: 1;
+        flex-basis: content;
+        align-self: center;
+        padding-left: 30px;
+    }
+    .control-sort {
+        flex-grow: 2;
+        flex-basis: content;
+        align-self: flex-end;
+    }
+}
+
+/* @media only screen and (min-width: 900px){
+    .control-instock {
+        padding-left: 30px;
+    }
+} */
+
+/* @media only screen and (min-width: 653px){
     .controls > .control-numb-of-items,
     .controls .control-instock,
     .controls .control-sort {
         width: 33.3333%;
     }
-}
+} */
+
 
 .controls-container > .controls .input {
     /* height: 50px; */
@@ -112,7 +148,7 @@
 
 .controls .control-instock .input > label > span {
     text-align: left;
-    padding: 18px 0px 18px 5px;
+    /* padding: 18px 0px 18px 5px; */
 }
 
 .controls .control-sort .input > label > span {

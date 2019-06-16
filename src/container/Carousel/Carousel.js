@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import CarouselSlide from '../../components/Carousel/CarouselSlide/CarouselSlide';
 import CarouselButton from '../../components/Carousel/CarouselButton/CarouselButton';
 import CarouselRadioButtons from '../../components/Carousel/CarouselRedioButtons/CarouselRadioButtons';
-import WithoutRootdiv from '../../hoc/WithoutRootDiv/WithoutRootDiv';
 import Button from '../../components/UI/Button/Button';
-import CarouselCheckbox from '../../components/Carousel/CarouselCheckbox/CarouselCheckbox';
+import Input from '../../components/UI/Input/Input';
+import WithoutRootDiv from '../../hoc/WithoutRootDiv/WithoutRootDiv';
+// import CarouselCheckbox from '../../components/Carousel/CarouselCheckbox/CarouselCheckbox';
 import './Carousel.css';
 
 class Carousel extends Component {
@@ -88,10 +89,10 @@ class Carousel extends Component {
             );
         })
         return (
-            <WithoutRootdiv>
-                <div className="wellcome">Wellcome</div> {/*rubric04*/}  
-                <CarouselCheckbox changed={this.toggleSllidesHandler}/> {/*rubric06*/}
-                {/* rubric01 */}
+            <div className='carousel-page'>
+            <div className="wellcome">Wellcome</div>
+            <div className='carousel-container'>
+                {/* <CarouselCheckbox changed={this.toggleSllidesHandler}/> */}
                 <div className="carousel">
                     <div className='carousel-wrapp'>
                         {slides}
@@ -106,8 +107,12 @@ class Carousel extends Component {
                         clickOnButton={this.showSlideWithIdHandler}/>
                     </div>
                 </div>
+                <Input class='carousel-checkbox-input' elementType='checkbox' changed={this.toggleSllidesHandler} label='Toggle Slide Show'/>
+<div className='button-container'>
                 <Link to='/shopping'><Button class='add-button shop-all-btn'>Shop All</Button></Link> {/*rubric12*/}
-            </WithoutRootdiv>
+                </div>
+            </div>
+            </div>
         )
     };
 };

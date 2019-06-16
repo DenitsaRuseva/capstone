@@ -66,7 +66,7 @@ const input = ( props ) => {
                 break;
             case ('checkbox'):
                 inputElement = (
-                    <input type="checkbox" onChange={props.changed} checked={props.checked}/>
+                    <input type="checkbox" className={inputClasses.join(' ')} onChange={props.changed} checked={props.checked}/>
                 );
                 break;
         default:

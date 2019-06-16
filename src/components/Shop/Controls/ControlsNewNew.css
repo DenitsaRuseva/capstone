@@ -1,0 +1,197 @@
+.controls-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    top: 50px;
+    float: right;
+    color: #4d4d00;
+    font: 14px 'Muli', sans-serif;
+}
+
+
+.shown-products-info {
+    display: inline-block;
+    position: relative;
+    /* height: 30px; */
+    width: 90%;
+    margin: 0px auto;
+    padding: 7px 10px 5px 10px;
+    /* font-family: 'Muli', sans-serif;
+    font-size: 14px; */
+    /* font-style: italic; */
+    border-bottom: 3px double #4d4d00;
+}
+
+
+
+.controls {
+    width: 100%;
+    padding-top: 8px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.controls .input {
+    padding: 0px;
+    margin-bottom: 5px;
+}
+
+.controls .input > label {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    padding: 0px 5px;
+}
+
+
+
+.controls .control-instock {
+    padding-top: 5px;
+}
+
+.controls .control-instock .input > label {
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.control-instock .input > label > span{
+    order: 2;
+    padding-bottom: 0px;
+}
+
+.controls .input > label .inputElement{
+    margin: 0px;
+    height: 20px;
+    padding: 0px;
+}
+
+.control-numb-of-items .input > label .inputElement {
+    width: 60px;
+}
+
+.control-instock .input > label .inputElement{
+    position: relative;
+    width: auto;
+    height: 14px;
+    order: 1;
+}
+
+.control-sort .input > label .inputElement {
+    width: auto;
+}
+
+
+@media only screen and (max-width: 210px){
+    .shown-products-info .centeredXY{
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+
+@media only screen and (min-width: 300px){
+    .controls {
+        justify-content: space-around;
+    }
+    .controls .input > label {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .control-instock, .control-numb-of-items, .control-sort {
+        width: 100%;
+    }
+    /* .control-sort .input > label .inputElement {
+        max-width: 150px;
+    } */
+    .controls .input .label {
+        align-items: baseline;
+    }
+}
+
+@media only screen and (min-width: 400px){
+    .controls {
+        /* width: 90%; */
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+    .control-numb-of-items, .control-sort {
+        width: auto;
+    }
+    .controls .control-numb-of-items .input > label {
+        justify-content: flex-start;
+    }
+    .controls .control-sort .input > label {
+        justify-content: flex-end;
+    }
+    .controls label > span {
+        padding-left: 0px;
+        white-space: nowrap;
+    }
+}
+
+/* @media only screen and (min-width: 450px){
+    .control-sort .input > .label .inputElement {
+        width: 220px;
+    }
+} */
+
+@media only screen and (min-width: 510px){
+    .controls-container{
+        top: 0px;
+    }
+}
+
+@media only screen and (min-width: 635px){
+    .controls-container{
+        top: 0px;
+    }
+    .controls{
+        max-width: 645px;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: center;
+    }
+    .controls .control-instock {
+        width: auto;
+        min-width: 33.3333%;
+        padding-top: 0px;
+    }
+    .control-sort{
+        order: 3;
+        min-width: 33.3333%;
+    }
+    .control-numb-of-items{
+        min-width: 33.3333%;
+    }
+    .controls .control-instock .input > .label {
+        align-items: baseline;
+        /* justify-content: center; */
+    }
+
+    .controls .control-sort .input > label > span {
+        text-align: right;
+    }
+    .controls .control-numb-of-items .input > .label > span {
+        text-align: left;
+    }
+    .controls .control-instock .input > .label .inputElement {
+        align-self: flex-end;
+        position: relative;
+        left: 3px;
+    }
+}
+
+@media only screen and (min-width: 900px){
+    .controls-container{
+        width: 75%;
+    }
+}

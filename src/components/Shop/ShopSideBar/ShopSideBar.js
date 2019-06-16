@@ -11,7 +11,7 @@ const shopSideBar = (props) => {
     return (
         <div className={attachedClasses}>
             <div className='hide-on-md'> 
-                <div className='md-only'><span>Shop by category</span></div>
+                <div className='md-only'><span>Categories:</span></div>
             </div>
             <div className='hide-on-l'>
                 <div className='md-only' onClick={() => props.toggleCategoryMenu()}><span>Shop by category <FontAwesomeIcon icon="chevron-down"/></span></div>
