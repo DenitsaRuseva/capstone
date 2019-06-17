@@ -1,34 +1,31 @@
 .radio-buttons {
-    position: relative;
+    position: absolute;
     width: auto;
     left: 50%;
-    bottom: 225px;
+    bottom: 30px;
     -webkit-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
             transform: translateX(-50%);
-    /* text-align: center; */
 }
 
 @media only screen and (min-width: 500px) {
     .radio-buttons {
         width: 200px;
-        top: 500px;
     }
 }
 
 .radio-buttons-wrapp {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+    justify-content: center;
     width: 100%;
     position: absolute;
     margin: 0px;
     padding: 0px;
-    /* bottom: -522px; */
     text-align: center;
-}
-
-@media only screen and (min-width: 500px) {
-    .radio-buttons-wrapp {
-        top: -30px;
-    }
 }
 
 .radio-button {
@@ -51,6 +48,4 @@
     background-color: #737373;
     -webkit-box-shadow: 0 0 4px black;
             box-shadow: 0 0 4px black;
-    /* border: 1px solid white; */
-
 }
