@@ -21,10 +21,6 @@ font-family: 'Yellowtail', cursive;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    font: 14px 'Pacifico', cursive;
-}
-
-.logo-container.big{
     font-size: 16px;
 }
 
@@ -32,9 +28,14 @@ font-family: 'Yellowtail', cursive;
     font-size: 10px;
 }
 
+.logo-container.logo-container.small span.logo-ring{
+    width: 36px;
+    height: 36px;
+}
+
 .logo-container span.logo-text-container{
     position: relative;
-    left: 15px;
+    left: 0.9375em;
     bottom: 0.5em;
     display: inline-block;
     font-family: 'Caveat', cursive;
@@ -49,7 +50,7 @@ font-family: 'Yellowtail', cursive;
 .logo-container > span.logo-ring{
     position: relative;
     /* padding-left: 10px; */
-    padding-right: 5px;
+    padding-right: 0.3125em;
     width: 50px;
     height: 50px;
     display: inline-flex;
@@ -76,7 +77,7 @@ text-shadow: 0px 0px 2px black;
 
 .logo-container span.logo-text{
     position: relative;
-    left: -35px;
+    left: -2.1875em;
     height: 5em;
     line-height: 5em;
 }

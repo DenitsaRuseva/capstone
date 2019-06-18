@@ -25,7 +25,9 @@ const shopSideBar = (props) => {
                     currentCategory={props.currentCategory}
                     clickedCategories={props.clickedCategories}/>
                 </div>
+                <Logo class='small'/>
                 <Logo class='big'/>
+
             </div>
         </div>
     );
