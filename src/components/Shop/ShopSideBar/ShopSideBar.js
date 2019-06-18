@@ -1,6 +1,7 @@
 import React from 'react';
 import CategoryButtons from './CategoryButtons/CategoryButtons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Logo from '../../Logo/Logo';
 import './ShopSideBarNew.css';
 
 const shopSideBar = (props) => {
@@ -16,15 +17,16 @@ const shopSideBar = (props) => {
             <div className='hide-on-l'>
                 <div className='md-only' onClick={() => props.toggleCategoryMenu()}><span>Shop by category <FontAwesomeIcon icon="chevron-down"/></span></div>
             </div>
-                <div className='side-bar-container'>
-                    <div className='side-bar'> 
-                        <CategoryButtons
-                        clickOnCategory={props.clickOnCategory}
-                        clickOnSubcategory={props.clickOnSubcategory}
-                        currentCategory={props.currentCategory}
-                        clickedCategories={props.clickedCategories}/>
-                    </div>
+            <div className='side-bar-container'>
+                <div className='side-bar'> 
+                    <CategoryButtons
+                    clickOnCategory={props.clickOnCategory}
+                    clickOnSubcategory={props.clickOnSubcategory}
+                    currentCategory={props.currentCategory}
+                    clickedCategories={props.clickedCategories}/>
                 </div>
+                <Logo class='big'/>
+            </div>
         </div>
     );
 };

@@ -1,0 +1,147 @@
+/* 
+font-family: 'Architects Daughter', cursive;
+font-family: 'Cookie', cursive;
+font-family: 'Courgette', cursive;
+font-family: 'Covered By Your Grace', cursive;
+font-family: 'Great Vibes', cursive;
+font-family: 'Kalam', cursive;
+font-family: 'Kaushan Script', cursive;
+font-family: 'La Belle Aurore', cursive;
+font-family: 'Seaweed Script', cursive;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Yellowtail', cursive;
+ */
+
+
+
+.logo-container{
+    position: relative;
+    left: 100px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font: 14px 'Pacifico', cursive;
+}
+
+.logo-container.big{
+    font-size: 16px;
+}
+
+.logo-container.small{
+    font-size: 10px;
+}
+
+.logo-container span.logo-text-container{
+    position: relative;
+    left: 15px;
+    bottom: 0.5em;
+    display: inline-block;
+    font-family: 'Caveat', cursive;
+
+}
+
+.logo-container span {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.logo-container > span.logo-ring{
+    position: relative;
+    /* padding-left: 10px; */
+    padding-right: 5px;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #3d5c5c;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 6px #5c8a8a;
+    font-size: 2.3em;
+
+    font-family: 'Yellowtail', cursive;
+    font-family: 'Shadows Into Light', cursive;
+font-family: 'Seaweed Script', cursive;
+/* font-family: 'Covered By Your Grace', cursive; */
+color: brown;
+/* text-shadow: -5px 4px 1px #cccccc; */
+/* text-shadow: 4px 4px 1px #f5d6d6; */
+text-shadow: 0px 0px 2px black;
+
+    z-index: 2;
+}
+
+
+.logo-container span.logo-text{
+    position: relative;
+    left: -35px;
+    height: 5em;
+    line-height: 5em;
+}
+
+.logo-container span.logo-text span.t{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 5em;
+    text-shadow: 0px 0px 4px #5c8a8a;
+    
+}
+
+.logo-container span.logo-text span.up{
+    position: absolute;
+    width: 0.5em;
+    height: 0.4em;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.logo-container span.logo-text span.two{
+    position: relative;
+    font-size: 4em;
+    text-shadow: 0px 0px 4px brown;
+    color: white;
+    /* font-family: 'Permanent Marker', cursive; */
+letter-spacing: -0.1em;
+    left: -0.47em;
+}
+
+.logo-container span.logo-text span.tree{
+    position: relative;
+    font-size: 4em;
+    /* font-family: 'Permanent Marker', cursive; */
+    left: -0.2em;
+}
+
+.logo-container span.logo-text span.four{
+    position: relative;
+    font-size: 3.7em;
+    /* font-family: 'Permanent Marker', cursive; */
+    
+    left: -0.3em;
+}
+
+.logo-container span.logo-text span.five{
+    position: relative;
+    font-size: 3em;
+    /* font-family: 'Permanent Marker', cursive; */
+    
+    left: -0.4em;
+}
+
+.logo-container span.logo-text span.six{
+    position: relative;
+    left: -0.7em;
+    font-size: 2em;
+    
+
+}
+
+.logo-container span.logo-text span.seven{
+    position: relative;
+    font-size: 1.2em;
+    left: -0.4em;
+    font-weight: bold;
+}
+
+
