@@ -1,4 +1,17 @@
 .items-gallery {
     position: relative;
-    top: 700px;
+    top: 40px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* top: 700px; */
+}
+
+
+@media only screen and (min-width: 900px){
+    .items-gallery{
+        top: -40px;
+        width: 75%;
+    }
 }

@@ -33,6 +33,7 @@ class Shop extends Component {
         numberOfProductsInCategory: null,
         shownCategoryMenu: false,
         clickedCategories: [],
+        clickedCategoriesNumb: 0,
         selectValue: 'none_none',
         selectedProduct: '',
         numberOfProductsInPage: 24,
@@ -58,6 +59,7 @@ class Shop extends Component {
                 numberOfProductsInCategory: this.props.numberOfProductsInCategory,
                 shownCategoryMenu: this.props.shownCategoryMenu,
                 clickedCategories: [...this.props.clickedCategories],
+                clickedCategoriesNumb: this.state.clickedCategoriesNumb,
                 selectValue: this.props.selectValue,
                 loading: this.props.loading,
                 numberOfProductsInPage: this.props.numberOfProductsInPage,
@@ -66,11 +68,8 @@ class Shop extends Component {
             });
         }
         else if(!this.props.shopMounted && this.state.loading) {
-            const numberOfCategories = this.props.categoriesAndSubcat.length;
-            let clickedCategories = [];
-            for(let i=0; i < numberOfCategories; i++){
-                clickedCategories.push(false);
-            };
+            // const numberOfCategories = this.props.categoriesAndSubcat.length;
+            let clickedCategories = [...Array(this.props.categoriesAndSubcat.length)].fill(false);
             if(this.props.match.params.category){
                     const currentURLCategory = this.props.categoriesByIds[this.props.match.params.category] ? this.props.match.params.category : 'all';
                     const currentURLSubcategory = (currentURLCategory !== 'all' && this.props.match.params.subcategory && this.props.categoriesByIds[this.props.match.params.category][this.props.match.params.subcategory]) ? this.props.match.params.subcategory : 'all';
@@ -101,6 +100,7 @@ class Shop extends Component {
                             productsToShowIds: [...productsToShowIds],
                             numberOfProductsInCategory: productsToShowIds.length,
                             clickedCategories: [...clickedCategories],
+                            clickedCategoriesNumb: 1,
                             loading: false
                             });
                             this.props.history.replace('/shopping/' + currentURLCategory);
@@ -121,6 +121,7 @@ class Shop extends Component {
                             productsToShowIds: [...productsToShowIds],
                             numberOfProductsInCategory: numberOfProductsInCategory,
                             clickedCategories: [...clickedCategories],
+                            clickedCategoriesNumb: 1,
                             loading: false
                             });
                             this.props.history.replace('/shopping/' + currentURLCategory + '/' + currentURLSubcategory);
@@ -196,18 +197,26 @@ class Shop extends Component {
 
 
     sideBarCategoryClickHandler = (categoryId, categoryClicked) => {
+
         if(this.state.currentCategory === categoryClicked){
             let productsToShowIds = [...this.props.allProductsByIds];
             productsToShowIds = this.sortProducts(productsToShowIds, this.state.sort.sortBy, this.state.sort.order);
             productsToShowIds = this.checkDoesInStockIsChecked(productsToShowIds);
             this.props.history.replace('/shopping');
             const clickedCategories = this.toggleSubcategoriesDropdown(categoryId);
+            let updatedClickedCategoriesNumb = 0;
+            clickedCategories.map(i  => {
+                if(i){
+                    updatedClickedCategoriesNumb = updatedClickedCategoriesNumb + 1;
+                };
+            });
             this.setState({
                 currentCategory: 'all',
                 currentSubcategory: 'all',
                 productsToShowIds: productsToShowIds,
                 numberOfProductsInCategory: productsToShowIds.length,
                 clickedCategories: clickedCategories,
+                clickedCategoriesNumb: updatedClickedCategoriesNumb,
                 currentPage: 1,
                 shownCategoryMenu: false
             });
@@ -219,12 +228,19 @@ class Shop extends Component {
             const numberOfProductsInCategory = productsToShowIds.length;
             productsToShowIds = this.checkDoesInStockIsChecked(productsToShowIds);
             const clickedCategories = this.showSubcategoriesDropdown(categoryId);
+            let updatedClickedCategoriesNumb = 0;
+            clickedCategories.map(i  => {
+                if(i){
+                    updatedClickedCategoriesNumb = updatedClickedCategoriesNumb + 1;
+                };
+            });
             this.setState({
                 currentCategory: categoryClicked,
                 currentSubcategory: 'all',
                 productsToShowIds: productsToShowIds,
                 numberOfProductsInCategory: numberOfProductsInCategory,
                 clickedCategories: clickedCategories,
+                clickedCategoriesNumb: updatedClickedCategoriesNumb,
                 currentPage: 1
             });
         };
@@ -402,7 +418,9 @@ class Shop extends Component {
                             toggleCategoryMenu={this.toggleCategoryMenuHandler}
                             shownCategoryMenu={this.state.shownCategoryMenu}
                             currentCategory={this.state.currentCategory}
-                            clickedCategories={this.state.clickedCategories}/>
+                            clickedCategories={this.state.clickedCategories}
+                            clickedCategoriesNumb={this.state.clickedCategoriesNumb}
+                            categoriesAndSubcat={this.props.categoriesAndSubcat}/>
                         <PropsRoute path='/shopping' component={CategoryInfo}
                             category={this.state.currentCategory}
                             subcategory={this.state.currentSubcategory}/>
@@ -484,6 +502,7 @@ const mapStateToProps = state => {
         numberOfProductsInCategory: state.numberOfProductsInCategory,
         shownCategoryMenu: state.shownCategoryMenu,
         clickedCategories: state.clickedCategories,
+        clickedCategoriesNumb: state.clickedCategoriesNumb,
         selectValue: state.selectValue,
         loading: state.loading,
         currentPage: state.currentPage,

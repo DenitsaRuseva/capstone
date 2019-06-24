@@ -22,7 +22,7 @@
     font-weight: bold;
     font-size: 16px;
     color: #663300;
-    box-shadow: inset 0 0 4px #994d00; 
+    /* box-shadow: inset 0 0 4px #994d00;  */
     background-color: #ebebe0;
     border: 1px solid #994d00;
     border-bottom: none;
@@ -110,7 +110,7 @@
         height: 40px;
         padding: 0px;
         flex-wrap: nowrap;
-        box-shadow: unset;
+        /* box-shadow: unset; */
         border: none;
         background-color: unset;
         border-bottom: 3px double brown;

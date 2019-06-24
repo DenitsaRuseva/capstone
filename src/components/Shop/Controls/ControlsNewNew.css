@@ -201,6 +201,8 @@
 @media only screen and (min-width: 900px){
     .controls-container{
         width: 75%;
+        top: -34px;
+        z-index: 200;
     }
 
     .controls .control-instock {
@@ -217,21 +219,15 @@
 
     .controls .input > .label {
         width: unset;
-        /* padding: 3px;
-        border: 1px solid #c2c2a3; */
     }
 
-    .controls .control-instock .input > .label .inputElement {
-        /* top: 1px; */
+    .shown-products-info{
+        height: 30px;
+        font: 12px monospace;
+        line-height: 20px;
+        color: darkgreen;
     }
-
-    /* .controls-container::before{
-        content: '';
-        display: block;
-        position: absolute;
-        width: 93%;
-        left: 50%;
-        transform: translateX(-50%);
-        border-top: 3px double brown;
-    } */
+    .shown-products-info .centeredXY{
+        height: 12px;
+    }
 }

@@ -31,6 +31,7 @@ li.category-list-item {
 }
 
 li.category-list-item > span {
+    position: relative;
     display: inline-block;
     width: 100%;
     height: 30px;
@@ -40,6 +41,8 @@ li.category-list-item > span {
     box-shadow: inset 0 0 4px #994d00;
     background-color: #f0f5f5;
 }
+
+
 
 ul.category-list li.subcategory-list-item {
     height: 30px;
@@ -95,6 +98,9 @@ ul.category-list-item .category-list-item > ul.subcategory-list {
 }
 
 @media only screen and (min-width: 900px){
+    ul.category-list ul.subcategory-list {
+        display: block;
+    }
     li.category-list-item ul.subcategory-list{
         max-height: 133px;
         border-top: none;
@@ -116,6 +122,9 @@ ul.category-list-item .category-list-item > ul.subcategory-list {
         box-shadow: none;
         background-color: white;
         
+    }
+    li.category-list-item span:hover {
+        color: #ccad00;
     }
     .side-bar > ul.category-list > li.category-list-item > span,
     .side-bar > ul.category-list > li.category-list-item ul.subcategory-list > li.subcategory-list-item > a > span {
