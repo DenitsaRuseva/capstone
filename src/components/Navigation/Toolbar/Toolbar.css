@@ -17,7 +17,8 @@
     background-image: -webkit-linear-gradient(left, #264d00,  #408000, #264d00);
     background-image: -o-linear-gradient(left, #264d00,  #408000, #264d00);
     background-image: linear-gradient(to right, #264d00,  #408000, #264d00); */
-    background-color: #c2c2a3;
+    /* background-color: #c2c2a3; */
+    background-color: black;
     padding: 0 20px;
     z-index: 300;
 }

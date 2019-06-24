@@ -9,6 +9,7 @@ import './ShopNew.css';
 import WithoutRootDiv from '../../hoc/WithoutRootDiv/WithoutRootDiv';
 import PageNumbers from '../../components/Shop/PageNumbersButtons/PageNumbersButtons';
 import CategoryInfo from '../../components/Shop/CategoryInfo/CategoryInfo';
+import Logo from '../../components/Logo/Logo';
 import {flattenArray} from '../../utility';
 import * as action from '../../store/actions/index';
 import WithErrorHandler from '../../hoc/WithErrorHandler/WithErrorHandler';
@@ -168,6 +169,10 @@ class Shop extends Component {
     };
 
     toggleSubcategoriesDropdown = (categoryId) => {
+        // let currentStateOfCategoryClicked = this.state.clickedCategories[categoryId];
+        // let updatedClickedCategories = [...Array(this.state.clickedCategories.length).fill(false)];
+        // updatedClickedCategories[categoryId] = !currentStateOfCategoryClicked;
+        // return updatedClickedCategories;
         let updatedClickedCategories = [...this.state.clickedCategories];
         updatedClickedCategories[categoryId] = !updatedClickedCategories[categoryId];
         return updatedClickedCategories;
@@ -389,6 +394,7 @@ class Shop extends Component {
         if(!this.state.loading && !this.props.error){
             shop = (
                 <div className='shop'>
+                    <PropsRoute path='/shopping' component={Logo} class='small'/>
                     <PropsRoute path='/shopping' 
                             component={ShopSideBar} 
                             clickOnCategory={this.sideBarCategoryClickHandler}

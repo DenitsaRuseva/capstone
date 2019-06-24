@@ -10,11 +10,6 @@ const controls = (props) => {
     console.log('in controls');
     return(
         <div className="controls-container">
-            <div className='shown-products-info'>
-                <CenteredXYText>
-                    {props.numberOnShownProducts}/{props.numberOfProductsInCategory}  products shown
-                </CenteredXYText>
-            </div>
                 <div className='controls'>
                     <div className='control-numb-of-items'>
                             <NumberOfItemsPerPage 
@@ -32,7 +27,11 @@ const controls = (props) => {
                             <InStockCheckbox onInStockClick={props.onInStockClick} showInStockOnly={props.showInStockOnly}/>
                     </div>
                 </div>
-
+                <div className='shown-products-info'>
+                <CenteredXYText>
+                    {props.numberOnShownProducts}/{props.numberOfProductsInCategory}  products shown
+                </CenteredXYText>
+                </div>
         </div>
     );
 };

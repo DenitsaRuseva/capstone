@@ -1,12 +1,12 @@
 import React from 'react';
 import PageNumbersButton from './PageNumbersButton/PageNumbersButton';
 import PageNumbersArrows from './PageNumbersArrows/PageNumbersArrows';
+import './PageNumbersButtons.css';
 
 
 //props.possiblePages holds the length of productsToShow, which is array from arrays of 
 // max 12 items
 const pageButtons = (props) => {
-    console.log(props.currentPage - 2 <= 0);
     let buttons = [];
     let firstPageButton, secondPageButton, thirdPageButton, fourthPageButton, fifthPageButton;
         firstPageButton = (props.currentPage - 2 <= 0) ?
@@ -52,7 +52,7 @@ const pageButtons = (props) => {
                 disabled={props.currentPage === props.possiblePages}>&#62;</PageNumbersArrows>)
 
     return (
-      <div> 
+      <div className='page-number-container'> 
           {buttons}
       </div>
     );

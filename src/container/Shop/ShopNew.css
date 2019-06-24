@@ -2,7 +2,8 @@
     position: relative;
     display: inline-block;
     width: 100%;
-    background-color: #f2ffe6;
+    background-color: beige;
+    font-family: 'Philosopher', sans-serif;
     z-index: 50;
 }
 
@@ -12,7 +13,7 @@
     width: 100%;
     height: 10px;
     position: relative;
-    background-color: #f2ffe6;
+    background-color: beige;
     z-index: 300;
 }
 
@@ -31,10 +32,27 @@
 }
 
 
+.shop .logo-container {
+    display: none;
+}
 
-@media only screen and (min-width: 768px) {
-    /* .shop {
-        padding-right: 10px;
-    } */
+
+@media only screen and (min-width: 900px) {
+    .shop{
+        width: 98%;
+        margin-top: 10px;
+        left: 1%;
+        padding: 0px 5px;
+        border: 1px solid black;
+        box-shadow: 0 0 4px saddlebrown;
+    }
+   .shop .logo-container {
+       position: absolute;
+       display: inline-flex;
+       width: 25%;
+       justify-content: center;
+       left: 22px;
+       top: 18px;
+   }
 }
 

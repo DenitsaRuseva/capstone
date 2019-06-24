@@ -6,8 +6,9 @@
     position: relative;
     top: 50px;
     float: right;
-    color: #4d4d00;
-    font: 14px 'Muli', sans-serif;
+    /* color: #4d4d00; */
+    color: #4d2600;
+    font: 14px 'PT Sans Narrow', sans-serif;
 }
 
 
@@ -21,7 +22,6 @@
     /* font-family: 'Muli', sans-serif;
     font-size: 14px; */
     /* font-style: italic; */
-    border-bottom: 3px double #4d4d00;
 }
 
 
@@ -48,6 +48,10 @@
     padding: 0px 5px;
 }
 
+.controls .input > label span {
+    font-weight: normal;
+}
+
 
 
 .controls .control-instock {
@@ -68,6 +72,10 @@
     margin: 0px;
     height: 20px;
     padding: 0px;
+    font: inherit;
+    color: inherit;
+    font-weight: normal;
+    background-color: white;
 }
 
 .control-numb-of-items .input > label .inputElement {
@@ -194,4 +202,36 @@
     .controls-container{
         width: 75%;
     }
+
+    .controls .control-instock {
+        text-align: center;
+    }
+    .control-sort{
+        text-align: center;
+    }
+    .control-numb-of-items{
+        text-align: center;
+    }
+
+
+
+    .controls .input > .label {
+        width: unset;
+        /* padding: 3px;
+        border: 1px solid #c2c2a3; */
+    }
+
+    .controls .control-instock .input > .label .inputElement {
+        /* top: 1px; */
+    }
+
+    /* .controls-container::before{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 93%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top: 3px double brown;
+    } */
 }

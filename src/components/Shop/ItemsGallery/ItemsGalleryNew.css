@@ -2,9 +2,3 @@
     position: relative;
     top: 700px;
 }
-
-.item{
-    width: 20%;
-    float: left;
-    overflow: hidden;
-}
