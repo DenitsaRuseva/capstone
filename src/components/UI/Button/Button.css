@@ -53,17 +53,17 @@
     line-height: 13px;
     font-size: 13px;
     /* font-style: italic; */
-    background-color: #264d00;
+    /* background-color: #264d00; */
     border: none;
     outline: 0;
-    color: #ffd11a;  
+    /* color: #ffd11a;   */
     cursor: pointer;
     opacity: 0.8;
     /* transition: all 0.4s; */
 }
 
 .add-button:hover {
-    color: #ffff66;
+    /* color: #ffff66; */
     /* color: #ffa31a; */
     /* border-color: #ffd699; */
     opacity: 0.9;
@@ -72,7 +72,7 @@
 }
 
 .add-button:active {
-    background-color: #66cc00;
+    /* background-color: #66cc00; */
 }
 
 .add-button:disabled, .add-button:hover:disabled  {
@@ -82,11 +82,4 @@
     color: #737373;
 }
 
-.shop-all-btn {
-    
-}
-
-@media only screen and (min-width: 500px){
-    
-}
 

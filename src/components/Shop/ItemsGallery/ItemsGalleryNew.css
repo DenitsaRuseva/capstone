@@ -1,11 +1,19 @@
 .items-gallery {
     position: relative;
-    top: 40px;
+    top: 45px;
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    min-height: 541px;
     /* top: 700px; */
+}
+
+@media only screen and (min-width: 510px){
+    .items-gallery{
+        top: -10px;
+    }
 }
 
 
@@ -14,4 +22,5 @@
         top: -40px;
         width: 75%;
     }
+
 }

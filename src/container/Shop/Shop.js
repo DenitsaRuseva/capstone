@@ -59,7 +59,7 @@ class Shop extends Component {
                 numberOfProductsInCategory: this.props.numberOfProductsInCategory,
                 shownCategoryMenu: this.props.shownCategoryMenu,
                 clickedCategories: [...this.props.clickedCategories],
-                clickedCategoriesNumb: this.state.clickedCategoriesNumb,
+                clickedCategoriesNumb: this.state.clickedCategoriesNumb, //**TO REMOVE */
                 selectValue: this.props.selectValue,
                 loading: this.props.loading,
                 numberOfProductsInPage: this.props.numberOfProductsInPage,

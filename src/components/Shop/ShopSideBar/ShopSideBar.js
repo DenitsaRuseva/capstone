@@ -6,22 +6,10 @@ import WithouthRootDiv from '../../../hoc/WithoutRootDiv/WithoutRootDiv';
 import './ShopSideBarNew.css';
 
 const shopSideBar = (props) => {
-    // const categoryesHeight = props.clickedCategories.length * 30;
-    // let subcategoriesHeight = 0;
-    // let decorationHeight = 15;
-    // props.clickedCategories.map((element, i) => {
-    //     if(element){
-    //        subcategoriesHeight = subcategoriesHeight + (props.categoriesAndSubcat[i].subcategories.length*26);
-    //     };
-    // });
-
-    
-    // const heightAllElements =  categoryesHeight + subcategoriesHeight + decorationHeight;
-    // const diff = heightAllElements > 320 ? 320 - (heightAllElements % 320) : 320 - heightAllElements;
-    // const marginDecoration = diff > 20 ? diff - 20 : 0;
-    // const sideBarContainerHeight = heightAllElements + diff + 10 + 'px';
-    const attachedClasses = props.shownCategoryMenu ? ['side-bar-wrapper show-categories'] : ['side-bar-wrapper'];
     console.log('in shop side bar');
+
+   
+    const attachedClasses = props.shownCategoryMenu ? ['side-bar-wrapper show-categories'] : ['side-bar-wrapper'];
     return (
         <div className='side-bar-main'>
             
