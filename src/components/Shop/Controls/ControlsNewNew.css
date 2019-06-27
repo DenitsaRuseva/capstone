@@ -56,10 +56,21 @@
 }
 
 .controls .input > label span {
+    position: relative;
     font-weight: normal;
     padding-left: 0px;
+    white-space:nowrap
 }
 
+.control-numb-of-items span::after,
+.control-sort span::after {
+    position: absolute;
+    top: 0px;
+    right: -1px;
+    content: ":";
+    display: block;
+    padding-right: 3px;
+}
 
 
 .control-instock {
@@ -252,6 +263,10 @@
     .control-numb-of-items .input > .label > span{
         padding-left: 5px;
         order: 2;
+    }
+    .control-numb-of-items .input > .label > span::after,
+    .control-sort .input > .label > span::after{
+        display: none;
     }
    
 

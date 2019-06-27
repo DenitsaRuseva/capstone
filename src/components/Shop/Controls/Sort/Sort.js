@@ -37,7 +37,7 @@ class Sort extends Component {
     render(){
         return <Input 
         elementType="select"
-        label='Sort by: &nbsp;'
+        label='Sort by &nbsp;'
         elementConfig={this.state.elementConfig}
         changed={(value) => this.props.onSort(value)}/>
     }
