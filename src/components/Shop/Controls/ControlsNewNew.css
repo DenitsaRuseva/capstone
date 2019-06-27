@@ -18,6 +18,10 @@
     /* height: 30px; */
     width: 90%;
     margin: 0px auto;
+    height: 30px;
+    font: 12px monospace;
+    line-height: 20px;
+    color: darkgreen;
     padding: 7px 10px 5px 10px;
     /* font-family: 'Muli', sans-serif;
     font-size: 14px; */
@@ -28,44 +32,49 @@
 
 .controls {
     width: 100%;
-    padding-top: 8px;
+    padding: 8px 0px;
     display: inline-flex;
-    flex-direction: column;
-    align-items: center; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue; 
 }
 
 .controls .input {
     padding: 0px;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
 }
 
 .controls .input > label {
     display: inline-flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 0px;
     padding: 0px 5px;
 }
 
 .controls .input > label span {
     font-weight: normal;
+    padding-left: 0px;
 }
 
 
 
-.controls .control-instock {
-    padding-top: 5px;
+.control-instock {
+    height: 14px;
+    margin-top: 5px
 }
 
 .controls .control-instock .input > label {
-    flex-direction: row;
-    align-items: flex-end;
+    /* flex-direction: row; */
+    align-items: center;
 }
 
 .control-instock .input > label > span{
     order: 2;
-    padding-bottom: 0px;
+    /* padding-bottom: 0px; */
 }
 
 .controls .input > label .inputElement{
@@ -79,7 +88,7 @@
 }
 
 .control-numb-of-items .input > label .inputElement {
-    width: 60px;
+    width: auto;
 }
 
 .control-instock .input > label .inputElement{
@@ -94,12 +103,18 @@
 }
 
 
-@media only screen and (max-width: 210px){
+@media only screen and (max-width: 290px){
     .shown-products-info .centeredXY{
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+    .controls{
+        padding: 0px;
+    }
+    .control-instock{
+        margin-top: 0px;
     }
 }
 
@@ -109,40 +124,44 @@
         justify-content: space-around;
     }
     .controls .input > label {
-        flex-direction: row;
-        flex-wrap: nowrap;
+        /* flex-direction: row;
+        flex-wrap: nowrap; */
     }
-    .control-instock, .control-numb-of-items, .control-sort {
+    .control-instock{
         width: 100%;
+    }
+    .control-numb-of-items .input > label .inputElement {
+        width: 60px;
     }
     /* .control-sort .input > label .inputElement {
         max-width: 150px;
     } */
     .controls .input .label {
-        align-items: baseline;
+        /* align-items: baseline; */
     }
 }
 
 @media only screen and (min-width: 400px){
     .controls {
         /* width: 90%; */
-        flex-direction: row;
+        /* flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: center; */
 
     }
+    
     .control-numb-of-items, .control-sort {
-        width: auto;
+        /* width: auto; */
     }
     .controls .control-numb-of-items .input > label {
-        justify-content: flex-start;
+        /* justify-content: flex-start; */
     }
     .controls .control-sort .input > label {
-        justify-content: flex-end;
+        /* justify-content: flex-end; */
     }
     .controls label > span {
-        padding-left: 0px;
-        white-space: nowrap;
+        /* padding-left: 0px;
+        white-space: nowrap; */
     }
 }
 
@@ -156,63 +175,69 @@
     .controls-container{
         top: 0px;
     }
-}
-
-@media only screen and (min-width: 635px){
-    .controls-container{
-        top: 0px;
-    }
     .controls{
-        max-width: 645px;
-        flex-wrap: wrap;
-        align-items: baseline;
-        justify-content: center;
+        background-color: unset;
     }
-    .controls .control-instock {
-        width: auto;
-        min-width: 33.3333%;
-        padding-top: 0px;
+    .control-numb-of-items, .control-sort {
+        width: calc(33.3333% - 20px);
+        height: 20px;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
     }
     .control-sort{
         order: 3;
-        min-width: 33.3333%;
     }
-    .control-numb-of-items{
-        min-width: 33.3333%;
+    .control-instock{
+        height: 20px;
+        width: calc(33.3333% - 20px);
+        margin-top: 0px;
+        padding: 0px 10px;
     }
-    .controls .control-instock .input > .label {
-        align-items: baseline;
-        /* justify-content: center; */
+    .control-sort .input > .label,
+    .control-numb-of-items .input > .label{
+        height: 20px;
+        align-items: center;
     }
-
-    .controls .control-sort .input > label > span {
-        text-align: right;
-    }
-    .controls .control-numb-of-items .input > .label > span {
-        text-align: left;
-    }
-    .controls .control-instock .input > .label .inputElement {
-        align-self: flex-end;
+    .control-sort .input > .label > span,
+    .control-numb-of-items .input > .label > span {
         position: relative;
-        left: 3px;
+        top: -2.4px;
+        height: 14px;
+    }
+    .control-sort .input > .label .inputElement,
+    .control-numb-of-items .input > .label .inputElement {
+        position: relative;
+        top: -1.1px;
+        height: 29px;
+        padding-bottom: 2.1px;
+    }
+    .control-numb-of-items .input > .label .inputElement{
+        padding-bottom: 0px;
     }
 }
+
 
 @media only screen and (min-width: 900px){
     .controls-container{
         width: 75%;
         top: -34px;
+        color: saddlebrown;
         z-index: 200;
     }
 
+    
+
     .controls .control-instock {
+        position: relative;
+        top: -24px;
+        width: auto;
         text-align: center;
     }
     .control-sort{
-        text-align: center;
+        text-align: right;
     }
     .control-numb-of-items{
-        text-align: center;
+        /* text-align: center; */
     }
 
 
@@ -221,11 +246,33 @@
         width: unset;
     }
 
+    .control-sort .input > .label > span{
+        padding-right: 5px;
+    }
+    .control-numb-of-items .input > .label > span{
+        padding-left: 5px;
+        order: 2;
+    }
+   
+
+
+    .control-sort .input > .label .inputElement,
+    .control-numb-of-items .input > .label .inputElement {
+        width: 104px;
+        height: 42px;
+        border: 3px double brown;
+    }
+    .control-sort .input > .label .inputElement{
+        margin-right: 3%;
+    }
+    .control-numb-of-items .input > .label .inputElement{
+        margin-left: 3%;
+    }
+
     .shown-products-info{
-        height: 30px;
-        font: 12px monospace;
-        line-height: 20px;
-        color: darkgreen;
+        top: -40px;
+       padding: 10px;
+       z-index: -1;
     }
     .shown-products-info .centeredXY{
         height: 12px;

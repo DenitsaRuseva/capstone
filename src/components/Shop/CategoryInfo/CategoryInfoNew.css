@@ -99,21 +99,31 @@
 @media only screen and (min-width: 900px){
     .category-info-container {
         position: relative;
-        justify-content: space-around;
+        /* justify-content: space-around; */
+        justify-content: space-between;
         width: 75%;
         height: 70px;
         background-color: #ffffe6;
         box-shadow: inset 0 0 4px #504b4be0;
     }
     .category-container, .subcategory-container {
-        width: 40%;
+        width: 32%;
         height: 40px;
         padding: 0px;
         flex-wrap: nowrap;
-        /* box-shadow: unset; */
         border: none;
         background-color: unset;
         border-bottom: 3px double brown;
+    }
+    .category-container{
+        justify-content: flex-start;
+        margin-left: 3%;
+        padding-left: 5px;
+    }
+    .subcategory-container{
+        justify-content: flex-end;
+        margin-right: 3%;
+        padding-right: 5px;
     }
     .category-container span, .subcategory-container span {
         height: 37px;
