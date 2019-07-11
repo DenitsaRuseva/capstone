@@ -18,7 +18,7 @@ const shopSideBar = (props) => {
                 <div className='md-only'><span>Categories:</span></div>
             </div>
             <div className='hide-on-l'>
-                <div className='md-only' onClick={() => props.toggleCategoryMenu()}><span>Shop by category <FontAwesomeIcon icon="chevron-down"/></span></div>
+                <div className='md-only' onClick={() => props.toggleCategoryMenu()}><span>Shop by category<FontAwesomeIcon icon="chevron-down"/></span></div>
             </div>
             {/* <div className='decoration up'>
                 <svg viewBox="0 0 144.51883 39.125126" xmlns="http://www.w3.org/2000/svg" fill='brown'>

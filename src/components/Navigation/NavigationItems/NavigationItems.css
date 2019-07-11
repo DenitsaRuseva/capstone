@@ -40,7 +40,7 @@ nav.sm-only ul.navigationItems > li.navigationItem:hover {
 }
 
 nav.sm-only ul.navigationItems > li.navigationItem a {
-    color: #cccccc;
+    color: white;
     height: auto;
     line-height: unset;
 }

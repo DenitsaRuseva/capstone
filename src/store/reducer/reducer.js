@@ -8,8 +8,8 @@ const initialState = {
     categoriesByIds: {}, 
     subcategoriesByIds: {},
     sort: {
-        sortBy: 'none',
-        order: 'none'
+        sortBy: 'rating',
+        order: 'descending'
     },
     showInStockOnly: false,
     currentCategory: 'all',
@@ -19,7 +19,7 @@ const initialState = {
     shownCategoryMenu: false,
     clickedCategories: [],
     clickedCategoriesNumb: 0,
-    selectValue: 'none',
+    selectValue: 'rating_descending',
     numberOfProductsInPage: 24,
     currentPage: 1,
     numberOfProductsInPageSelectValue: '24',

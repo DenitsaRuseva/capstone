@@ -9,6 +9,7 @@
     /* color: #4d4d00; */
     color: #4d2600;
     font: 14px 'PT Sans Narrow', sans-serif;
+    background-color: aliceblue;
 }
 
 
@@ -22,7 +23,7 @@
     font: 12px monospace;
     line-height: 20px;
     color: darkgreen;
-    padding: 7px 10px 5px 10px;
+    padding: 0px 10px 5px 10px;
     /* font-family: 'Muli', sans-serif;
     font-size: 14px; */
     /* font-style: italic; */
@@ -33,12 +34,13 @@
 .controls {
     width: 100%;
     padding: 8px 0px;
+    padding-bottom: 2px;
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: aliceblue; 
+   
 }
 
 .controls .input {
@@ -152,36 +154,6 @@
     }
 }
 
-@media only screen and (min-width: 400px){
-    .controls {
-        /* width: 90%; */
-        /* flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center; */
-
-    }
-    
-    .control-numb-of-items, .control-sort {
-        /* width: auto; */
-    }
-    .controls .control-numb-of-items .input > label {
-        /* justify-content: flex-start; */
-    }
-    .controls .control-sort .input > label {
-        /* justify-content: flex-end; */
-    }
-    .controls label > span {
-        /* padding-left: 0px;
-        white-space: nowrap; */
-    }
-}
-
-/* @media only screen and (min-width: 450px){
-    .control-sort .input > .label .inputElement {
-        width: 220px;
-    }
-} */
-
 @media only screen and (min-width: 510px){
     .controls-container{
         top: 0px;
@@ -233,6 +205,7 @@
         width: 75%;
         top: -34px;
         color: saddlebrown;
+        background-color: unset;
         z-index: 200;
     }
 

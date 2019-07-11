@@ -23,8 +23,8 @@ class Shop extends Component {
     state = {
         loading: true,
         sort: {
-            sortBy: 'none',
-            order: 'none'
+            sortBy: 'rating',
+            order: 'descending'
         },
         showInStockOnly: false,
         currentCategory: 'all',
@@ -34,7 +34,7 @@ class Shop extends Component {
         shownCategoryMenu: false,
         clickedCategories: [],
         clickedCategoriesNumb: 0,
-        selectValue: 'none_none',
+        selectValue: 'rating_descending',
         selectedProduct: '',
         numberOfProductsInPage: 24,
         currentPage: 1,
@@ -129,8 +129,9 @@ class Shop extends Component {
                     };
                 }
                 else {
+                    const allProductsByIdsRateSorted = this.sortProducts(this.props.allProductsByIds, "rating", 'descending');
                     this.setState({
-                        productsToShowIds: [...this.props.allProductsByIds],
+                        productsToShowIds: [...allProductsByIdsRateSorted],
                         numberOfProductsInCategory: this.props.allProductsByIds.length,
                         clickedCategories: [...clickedCategories],
                         loading: false
