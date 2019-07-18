@@ -411,7 +411,7 @@ class Shop extends Component {
         if(!this.state.loading && !this.props.error){
             shop = (
                 <div className='shop'>
-                    <PropsRoute path='/shopping' component={Logo} class='small'/>
+                    {/* <PropsRoute path='/shopping' component={Logo} class='small'/> */}
                     <PropsRoute path='/shopping' 
                             component={ShopSideBar} 
                             clickOnCategory={this.sideBarCategoryClickHandler}

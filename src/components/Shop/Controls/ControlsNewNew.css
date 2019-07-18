@@ -156,7 +156,8 @@
 
 @media only screen and (min-width: 510px){
     .controls-container{
-        top: 0px;
+        top: 3px;
+        background-color: #f2f2f2;
     }
     .controls{
         background-color: unset;
@@ -197,6 +198,10 @@
     .control-numb-of-items .input > .label .inputElement{
         padding-bottom: 0px;
     }
+    .shown-products-info{
+        height: 20px;
+        padding-bottom: 6px;
+    }
 }
 
 
@@ -213,15 +218,12 @@
 
     .controls .control-instock {
         position: relative;
-        top: -24px;
+        top: -15px;
         width: auto;
         text-align: center;
     }
     .control-sort{
         text-align: right;
-    }
-    .control-numb-of-items{
-        /* text-align: center; */
     }
 
 
@@ -249,6 +251,7 @@
         width: 104px;
         height: 42px;
         border: 3px double brown;
+        box-shadow: -2px 2px 6px #604020, 2px 2px 6px #604020;
     }
     .control-sort .input > .label .inputElement{
         margin-right: 3%;
@@ -258,9 +261,11 @@
     }
 
     .shown-products-info{
-        top: -40px;
-       padding: 10px;
+        top: -32px;
+        height: 35px;
+        padding: 10px;
        z-index: -1;
+       color: saddlebrown;
     }
     .shown-products-info .centeredXY{
         height: 12px;

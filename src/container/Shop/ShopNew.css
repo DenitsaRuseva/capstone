@@ -43,9 +43,10 @@
         width: 98%;
         margin-top: 8px;
         left: 1%;
-        padding: 0px 5px;
+        padding: 0px 5px 5px 5px;
         border: 1px solid black;
         box-shadow: 2px 2px 4px, 2px -2px 4px;
+        background-color: white;
         /* box-shadow: 0 0 4px saddlebrown; */
     }
    .shop .logo-container {

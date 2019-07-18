@@ -121,6 +121,7 @@ ul.category-list-item .category-list-item > ul.subcategory-list {
     li.category-list-item span {
         box-shadow: none;
         background-color: white;
+        /* background-color: #f2e6d9; */
         
     }
     li.category-list-item span:hover {

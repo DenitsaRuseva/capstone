@@ -1,6 +1,7 @@
 import React from 'react';
 import './Logo.css';
 
+
 const logo = (props) => (
     <div className={['logo-container', props.class].join(' ')}>
         <span className="logo-ring">WW</span>

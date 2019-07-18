@@ -13,15 +13,17 @@
 
 @media only screen and (min-width: 510px){
     .items-gallery{
-        top: -10px;
+        top: 0px;
+        background-color: white;
     }
 }
 
 
 @media only screen and (min-width: 900px){
     .items-gallery{
-        top: -40px;
+        top: -55px;
         width: 75%;
+        background-color: white;
     }
 
 }
