@@ -157,7 +157,8 @@
 @media only screen and (min-width: 510px){
     .controls-container{
         top: 3px;
-        background-color: #f2f2f2;
+        padding-bottom: 3px;
+        background-color: #ffff99;
     }
     .controls{
         background-color: unset;
@@ -209,6 +210,7 @@
     .controls-container{
         width: 75%;
         top: -34px;
+        padding-bottom: 0px;
         color: saddlebrown;
         background-color: unset;
         z-index: 200;

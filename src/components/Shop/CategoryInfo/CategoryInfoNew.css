@@ -15,11 +15,6 @@
     width: 100%;
     height: 25px;
     float: left;
-    /* border: 3px double black; */
-    /* border: 3px solid  #e6ccb3; */
-    /* border-bottom: none; */
-    /* font-family: 'Exo 2', sans-serif; */
-    font-weight: bold;
     font-size: 16px;
     border-bottom: none;
 }
@@ -77,10 +72,11 @@
         height: 100%;
         float: left;
         padding: 5px;
-        background: #bababa;
+        background: #660000;
         border: 1px solid black;
-        text-shadow: #e0e0e0 1px 1px 0;
+        text-shadow: black 1px 1px 0;
         box-shadow: inset 0 0 4px black;
+        color: white;
     }
     
     .category-container span, .subcategory-container span {
@@ -115,6 +111,7 @@
         background-color: unset;
         box-shadow: none;
         border-bottom: 3px double brown;
+        text-shadow: unset;
         color: #663300;
 
     }

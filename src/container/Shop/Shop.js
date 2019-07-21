@@ -406,7 +406,10 @@ class Shop extends Component {
     render(){
         console.log('in render shop');
         console.log(this.state);
-        const possiblePages = Math.trunc(this.state.productsToShowIds.length / this.state.numberOfProductsInPage) + (this.state.productsToShowIds.length % this.state.numberOfProductsInPage === 0 ? 0 : 1)
+        const possiblePages = Math.trunc(this.state.productsToShowIds.length / this.state.numberOfProductsInPage) + (this.state.productsToShowIds.length % this.state.numberOfProductsInPage);
+       
+       
+       
         let shop = <Spinner/>;
         if(!this.state.loading && !this.props.error){
             shop = (
@@ -444,7 +447,7 @@ class Shop extends Component {
                             productsToShowIds={this.state.productsToShowIds.slice((this.state.currentPage - 1)*this.state.numberOfProductsInPage, (this.state.currentPage - 1)*this.state.numberOfProductsInPage + this.state.numberOfProductsInPage)}
                             clickOnAddBtn={this.props.addProductToCart} 
                             clickOnImg={this.props.showProductPage}/>
-                        {possiblePages > 1 ?
+                        {possiblePages > 0 ?
                         <PropsRoute path='/shopping' component={PageNumbers}
                             currentPage={this.state.currentPage}
                             possiblePages=
@@ -456,7 +459,6 @@ class Shop extends Component {
             );
         };
         if(this.props.error){
-            alert('in');
             shop = (
                 <div className='shop'>
                         <PropsRoute path='/shopping' 

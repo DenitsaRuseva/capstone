@@ -11,13 +11,9 @@
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
     height: 56px;
-    /* background-image: -webkit-gradient(linear, left top, right top, from(#264d00),  color-stop(#408000), to(#264d00));
-    background-image: -webkit-linear-gradient(left, #264d00,  #408000, #264d00);
-    background-image: -o-linear-gradient(left, #264d00,  #408000, #264d00);
-    background-image: linear-gradient(to right, #264d00,  #408000, #264d00); */
-    /* background-color: #c2c2a3; */
     background-color: black;
     padding: 0 20px;
     z-index: 300;

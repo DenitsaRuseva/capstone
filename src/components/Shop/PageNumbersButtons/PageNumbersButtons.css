@@ -1,3 +1,49 @@
 .page-number-container{
-    display: none;
+    position: relative;
+    top: 45px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-page-number{
+    background: transparent;
+    outline: none;
+    border: none;
+    color: rgb(0, 100, 0);
+    cursor: pointer;
+}
+
+.btn-page-number:disabled{
+    color: lightgreen;
+    cursor: not-allowed;
+}
+
+@media only screen and (min-width: 510px){
+    .page-number-container{
+        top: 0px;
+        background-color: #ffffcc;
+    }
+    .btn-page-number{
+        color: rgb(100, 6, 6);
+    }
+    .btn-page-number:disabled{
+        color: rgba(206, 97, 97, 0.74);
+    }
+}
+
+@media only screen and (min-width: 900px){
+    .page-number-container{
+        width: 75%;
+        float: right;
+        background-color: unset;
+    }
+    .btn-page-number{
+        color: saddlebrown;
+        font-weight: bold;
+    }
+    .btn-page-number:disabled{
+        color: #d2a679;
+    }
 }
