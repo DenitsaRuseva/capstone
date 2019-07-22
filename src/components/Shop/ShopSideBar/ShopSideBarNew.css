@@ -41,9 +41,6 @@
 .side-bar-container {
     position: relative;
     width: 100%;
-    /* font: 16px 'Philosopher', sans-serif; */
-    font: 18px 'Charm', cursive;
-    /* font-weight: bold; */
 }
 
 .side-bar {
@@ -132,7 +129,7 @@
 }
 
 .side-bar-wrapper.show-categories .side-bar-container {
-    top: 0px;
+    top: -10px;
 }
 
 
@@ -199,6 +196,7 @@
         background-color: #ffffe6;
         /* box-shadow: inset 0 0 4px #504b4be0; */
         box-shadow: inset 0 0 4px saddlebrown;
+        font-family: 'Charm', cursive;
     }
 
     .side-bar-main .head-decoration{
@@ -316,9 +314,7 @@
         border: none;
         background-color: unset;
         text-transform: uppercase;
-        /* font-family: 'Mr De Haviland', cursive; */
-        /* font-family: 'Ruthie', cursive; */
-/* font-size: 27px; */
+        text-shadow: unset;
         letter-spacing: 5px;
     }
     .side-bar-wrapper .hide-on-l {

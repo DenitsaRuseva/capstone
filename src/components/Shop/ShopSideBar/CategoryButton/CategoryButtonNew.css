@@ -90,9 +90,14 @@ ul.category-list-item .category-list-item > ul.subcategory-list {
     .side-bar > ul.category-list > li.category-list-item ul.subcategory-list > li.subcategory-list-item > a > span {
         text-align: left;
         padding-left: 10px;
+        box-shadow: inset 0px 0px 5px rgb(128,  0, 0);
+
+
     }
     .side-bar > ul.category-list > li.category-list-item ul.subcategory-list > li.subcategory-list-item > a > span{
         padding-left: 20px;
+        box-shadow: unset;
+
     }
 
 }
@@ -125,11 +130,16 @@ ul.category-list-item .category-list-item > ul.subcategory-list {
         
     }
     li.category-list-item span:hover {
-        color: #ccad00;
+        color: gold;
     }
     .side-bar > ul.category-list > li.category-list-item > span,
     .side-bar > ul.category-list > li.category-list-item ul.subcategory-list > li.subcategory-list-item > a > span {
         text-align: center;
         padding-left: 0px;
+        box-shadow: unset;
+    }
+    .side-bar > ul.category-list > li.category-list-item > span:hover,
+    .side-bar > ul.category-list > li.category-list-item ul.subcategory-list > li.subcategory-list-item > a > span:hover{
+        color: gold;
     }
 }
