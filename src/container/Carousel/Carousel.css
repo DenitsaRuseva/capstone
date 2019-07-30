@@ -8,6 +8,7 @@
 
 @media (orientation: landscape){
     .carousel-page{
+        min-height: calc(100vh - 100px);
         align-items: baseline;
     }
 }
@@ -98,9 +99,15 @@
     display: inline-flex;
     justify-content: center;
    position: relative;
-   top: -18px;
+   top: -13px;
 
 }
+
+@media (orientation: landscape) {
+    .carousel-container .button-container {
+        top: -20px;
+    }
+  }
 
 .carousel-container .button-container > a {
     display: inline-block;

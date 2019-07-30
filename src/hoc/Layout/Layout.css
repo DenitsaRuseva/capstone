@@ -84,3 +84,9 @@
         width: 16.66%;
     }
 }
+
+@media (orientation: landscape){
+    .main{
+        min-height: calc(100vh - 100px);
+    }
+}

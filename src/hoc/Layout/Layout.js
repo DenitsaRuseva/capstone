@@ -231,7 +231,6 @@ class Layout extends Component {
 
     render(){
         console.log('in render layout');
-console.log(this.state.loadingShop);
         const carouselRoute = this.props.loadingCarousel ?
         <Route path="/" exact render={() => <Spinner/>}/> : 
         <PropsRoute path="/" exact 

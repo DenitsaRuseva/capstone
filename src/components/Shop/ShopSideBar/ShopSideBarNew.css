@@ -129,7 +129,7 @@
 }
 
 .side-bar-wrapper.show-categories .side-bar-container {
-    top: -10px;
+    top: 0px;
 }
 
 
@@ -146,8 +146,8 @@
    .side-bar-main{
        top: 0px;
    }
-    .side-bar-wrapper {
-        /* top: 10px; */
+   .side-bar-wrapper.show-categories .side-bar-container {
+        top: 2px;
     }
     .side-bar-container > .side-bar {
         width: 50%;
@@ -224,7 +224,7 @@
         top: 0px;
     }
     .side-bar-wrapper .side-bar-container {
-        top: -5px;
+        top: 5px;
         display: -webkit-inline-box;
         display: -ms-inline-flexbox;
         display: inline-flex; 

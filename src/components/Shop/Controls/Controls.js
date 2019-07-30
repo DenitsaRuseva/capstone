@@ -29,7 +29,7 @@ const controls = (props) => {
                 </div>
                 <div className='shown-products-info'>
                 <CenteredXYText>
-                    {props.numberOnShownProducts}/{props.numberOfProductsInCategory}  products shown
+                    {props.numberOnShownProducts}/{props.numberOfProductsInCategory}  products in category
                 </CenteredXYText>
                 </div>
         </div>

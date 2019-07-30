@@ -28,7 +28,6 @@ class WithBadge extends Component{
     };
 
     render(){
-        console.log(this.props.showBadge);
         const attachedClasses = this.state.anime ? 'badge-container show-badge' : 'badge-container'
         return (
            <div className={attachedClasses}>

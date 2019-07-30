@@ -35,9 +35,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    border: 1px solid #a3c2c2;
-    /* box-shadow: inset 0 0 8px #666600; */
-    /* box-shadow: inset 0 0 8px #ffc34d; */
+    border: 1px solid #a3c2c2; 
 }
 
 [class*="info-"] {
@@ -72,7 +70,7 @@
 
 
 
-.info-name, .info-price, .info-rating, .button-container {
+.info-name, .info-price, .info-rating, .item .button-container {
     width: 100%;
     height: 25%;
     margin: 0px;
@@ -88,6 +86,12 @@
        text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
+    transition: all 0.6s;
+
+}
+
+.item .info-name:hover{
+    color: black;
 }
 
 .info-price {
@@ -212,9 +216,6 @@
         box-shadow: inset 0 0 6px darkorange;
 
     }
-    .info-name:hover{
-        transform: scale(1.1);
-    }
 }
 
 @media only screen and (min-width: 900px) {
@@ -320,11 +321,10 @@
     }
  
     .item .add-button:hover {
+        background-color: #f9f2ec;
         opacity: 1;
     }
-    .item .info-name:hover{
-        color: black;
-    }
+   
 }
 
 

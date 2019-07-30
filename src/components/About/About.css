@@ -1,5 +1,6 @@
 .about {
     width: 100%;
+    padding-top: 1px;
     font-family: 'Arimo', sans-serif;
 }
 
@@ -26,7 +27,7 @@
 .article-paragraph {
     overflow-wrap: break-word;
     text-align: justify;
-    text-indent: 50px;
+    text-indent: 20px;
 }
 
 .article-header {

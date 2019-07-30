@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const imageContainer = (props) => {
+    console.log('in image container');
     const image = <img src={props.src} alt={props.alt} height={props.height} width={props.width}
         onLoad={(event) => {
             event.target.parentElement.classList.add('image-shown');

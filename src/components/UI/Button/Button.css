@@ -69,9 +69,9 @@
 }
 
 .add-button:hover {
-    /* opacity: 0.9;
-    -webkit-box-shadow: 0 0 10px #000000;
-            box-shadow: 0 0 10px #000000; */
+    opacity: 0.9;
+    -webkit-box-shadow: 0 0 5px #000000;
+            box-shadow: 0 0 5px #000000;
 }
 
 
@@ -83,11 +83,11 @@
 }
 
 @media only screen and (min-width: 510px){
-    .add-button{
+    .item .add-button{
         background-color: #990000;
         color: #ffcc00;
     }
-    .add-button:hover{
+    .item .add-button:hover{
         background-color: #ff6666;
     }
   

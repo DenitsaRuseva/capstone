@@ -6,8 +6,6 @@ import CarouselButton from '../../components/Carousel/CarouselButton/CarouselBut
 import CarouselRadioButtons from '../../components/Carousel/CarouselRedioButtons/CarouselRadioButtons';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
-import WithoutRootDiv from '../../hoc/WithoutRootDiv/WithoutRootDiv';
-// import CarouselCheckbox from '../../components/Carousel/CarouselCheckbox/CarouselCheckbox';
 import './Carousel.css';
 
 class Carousel extends Component {

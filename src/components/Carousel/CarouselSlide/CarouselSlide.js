@@ -11,6 +11,7 @@ const carouselSlide = (props) => {
                 <div key={i} className='img-container-carousel' onClick={() => props.showProduct(id)}>
                     <img 
                         src={props.allProducts[id].imagelink}
+                        alt={props.allProducts[id].name}
                     />
                 </div>
             )

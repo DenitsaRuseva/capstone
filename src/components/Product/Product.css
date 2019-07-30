@@ -14,10 +14,10 @@
     cursor: context-menu;
 }
 
-.product-image-container img {
+/* .product-image-container img {
     width: auto;
     height: auto;
-}
+} */
 
 .product-info-container {
     margin-top: 20px;

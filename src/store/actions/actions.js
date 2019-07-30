@@ -49,7 +49,6 @@ const mekeAllProductsObject = (products) => {
     });
     allProducts = flattenArray(allProducts);
     allProducts = allProducts.map((product, i) => {
-        console.log(product);
         return {
             name: product.name,
             description: product.description,

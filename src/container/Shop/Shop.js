@@ -9,7 +9,6 @@ import './ShopNew.css';
 import WithoutRootDiv from '../../hoc/WithoutRootDiv/WithoutRootDiv';
 import PageNumbers from '../../components/Shop/PageNumbersButtons/PageNumbersButtons';
 import CategoryInfo from '../../components/Shop/CategoryInfo/CategoryInfo';
-import Logo from '../../components/Logo/Logo';
 import {flattenArray} from '../../utility';
 import * as action from '../../store/actions/index';
 import WithErrorHandler from '../../hoc/WithErrorHandler/WithErrorHandler';
@@ -61,14 +60,12 @@ class Shop extends Component {
                 clickedCategories: [...this.props.clickedCategories],
                 clickedCategoriesNumb: this.state.clickedCategoriesNumb, //**TO REMOVE */
                 selectValue: this.props.selectValue,
-                loading: this.props.loading,
+                // loading: this.props.loading,
                 numberOfProductsInPage: this.props.numberOfProductsInPage,
-                currentPage: this.props.currentPage,
-                numberOfProductsInPage: this.props.numberOfProductsInPage
+                currentPage: this.props.currentPage
             });
         }
         else if(!this.props.shopMounted && this.state.loading) {
-            // const numberOfCategories = this.props.categoriesAndSubcat.length;
             let clickedCategories = [...Array(this.props.categoriesAndSubcat.length)].fill(false);
             if(this.props.match.params.category){
                     const currentURLCategory = this.props.categoriesByIds[this.props.match.params.category] ? this.props.match.params.category : 'all';
@@ -405,10 +402,9 @@ class Shop extends Component {
 
     render(){
         console.log('in render shop');
-        console.log(this.state);
-        const possiblePages = Math.trunc(this.state.productsToShowIds.length / this.state.numberOfProductsInPage) + (this.state.productsToShowIds.length % this.state.numberOfProductsInPage);
-       
-       
+        let possiblePages = Math.trunc(this.state.productsToShowIds.length / this.state.numberOfProductsInPage) + (this.state.productsToShowIds.length % this.state.numberOfProductsInPage > 0 ? 1 : 0);
+       alert(possiblePages);
+       alert(this.state.currentPage);
        
         let shop = <Spinner/>;
         if(!this.state.loading && !this.props.error){
