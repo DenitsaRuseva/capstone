@@ -403,8 +403,6 @@ class Shop extends Component {
     render(){
         console.log('in render shop');
         let possiblePages = Math.trunc(this.state.productsToShowIds.length / this.state.numberOfProductsInPage) + (this.state.productsToShowIds.length % this.state.numberOfProductsInPage > 0 ? 1 : 0);
-       alert(possiblePages);
-       alert(this.state.currentPage);
        
         let shop = <Spinner/>;
         if(!this.state.loading && !this.props.error){
