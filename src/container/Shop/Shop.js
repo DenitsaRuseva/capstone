@@ -453,6 +453,7 @@ class Shop extends Component {
             );
         };
         if(this.props.error){
+            console.log('ERRRORRRRRRR')
             shop = (
                 <div className='shop'>
                         <PropsRoute path='/shopping' 

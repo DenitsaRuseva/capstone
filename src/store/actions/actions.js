@@ -9,6 +9,7 @@ const fetchProductsStart = () => {
 };
 
 const fetchProductsFaill = (error) => {
+    console.log(error)
     return {
         type: actionTypes.FETCH_PRODUCTS_FAILL,
         error: error
@@ -66,9 +67,10 @@ const makeCategoryesAndSubcategories = (products) => {
     const catAndSubcat = Object.keys(products).map(key => {
         return {
             category: products[key].category,
-            subcategories: [...Array(products[key].subcategories.length)].map((_, i) => {
-            return products[key].subcategories[i].name
-            })
+            subcategories: [products[key].category]
+            // subcategories: [...Array(products[key].subcategories.length)].map((_, i) => {
+            // return products[key].subcategories[i].name
+            // })
         };
     });
     return catAndSubcat;
@@ -139,7 +141,7 @@ const mekeClickedCategories = (length) => {
 const makeCarouselProducts = () => {
     let carouselProducts = [];
     for(let i = 0; i < 18; i++){
-        carouselProducts.push(99-i)
+        carouselProducts.push(i)
         // carouselProducts.push(i)
 
     };
@@ -148,6 +150,30 @@ const makeCarouselProducts = () => {
 };
 
 const setState = (products) => {
+    console.log('innnnnnn')
+    return dispatch => {
+        dispatch(setAllProducts(products));
+
+
+        console.log(products, 'products')
+        
+        const carouselProducts = makeCarouselProducts();
+        
+        dispatch(setCarouselProducts(carouselProducts));
+
+        const categoriesAndSubcat = makeCategoryesAndSubcategories(products); 
+        // const categoriesByIds = makeCategoriesByIds(products, categoriesAndSubcat); 
+        const categoriesByIds = products;
+    
+        const allProductsByIds = makeAllProductsByIds(products); 
+
+        // const subcategoriesByIds = makesubcategoriesByIds(products);
+        const subcategoriesByIds = products;
+
+        const clickedCategories = mekeClickedCategories(categoriesAndSubcat.length); 
+        dispatch(setShopData(categoriesAndSubcat, categoriesByIds, subcategoriesByIds, allProductsByIds, clickedCategories));
+
+    }
     return dispatch => {
         const allProducts = mekeAllProductsObject(products); //Make array of objects; Every object represent product;
         dispatch(setAllProducts(allProducts));
@@ -203,7 +229,7 @@ const setCarouselProducts = (carouselProducts) => {
 export const fetchProducts = () => {
     return dispatch => {
         dispatch(fetchProductsStart());
-        const products = axios.get('https://webmppcapstone.blob.core.windows.net/data/itemsdata.json')
+        const products = axios.get('https://fakestoreapi.com/products')
         .then(res => dispatch(fetchProductsSuccess(res.data)))
         .catch( error => dispatch(fetchProductsFaill(error)));
     };

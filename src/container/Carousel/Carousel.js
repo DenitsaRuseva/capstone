@@ -78,7 +78,7 @@ class Carousel extends Component {
         const slides = this.props.carouselProducts.map((slide, id) => {
             return (
                 <CarouselSlide 
-                    key={id+this.props.allProducts[id].name}
+                    key={id+this.props.allProducts[id].title}
                     id={id}
                     currentSlideId={this.state.showSlideWithId}
                     showProduct={this.props.showProductPage} //rubric09

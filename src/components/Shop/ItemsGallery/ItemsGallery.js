@@ -20,6 +20,7 @@ class ItemsGallery extends Component {
             items = <div>No items to show</div>;
         }
         else {
+            console.log(this.props.productsToShowIds, 'iG')
             items = this.props.productsToShowIds.map((id, i) => {
                 return <Item 
                         key={i} 
